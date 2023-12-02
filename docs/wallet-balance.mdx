@@ -1,0 +1,34 @@
+---
+sidebar_position: 11
+---
+
+import Accordion from "@site/src/components/Accordion";
+import AccordionCode from "@site/src/components/AccordionCode";
+import {
+  walletAPI,
+  walletResponse,
+} from "@site/src/data/WalletBalanceDocs/data.js";
+
+# Wallet Balance
+
+##### This endpoint allows you get your Squad Wallet Balance. Please be informed that the wallet balance is in KOBO. (Please note that you can't get wallet balance for Dollar transactions).
+
+:::caution Authorization
+Any request made without the authorization key will fail with a 401 (Service Not Authorized) response code.
+:::
+
+:::info
+Authorization would be done via Headers using Keys gotten from your dashboard.
+:::
+
+<Accordion
+  items={walletAPI}
+  parameters={true}
+  endpoint={"https://sandbox-api-d.squadco.com/merchant/balance"}
+  method={"GET"}
+  header={
+    "This endpoint allows you get your Squad Wallet Balance. Amount is in KOBO"
+  }
+/>
+
+<AccordionCode items={walletResponse} />

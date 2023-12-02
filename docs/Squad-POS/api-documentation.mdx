@@ -1,0 +1,87 @@
+---
+sidebar_position: 2
+---
+
+import Accordion from "@site/src/components/Accordion";
+import AccordionCode from "@site/src/components/AccordionCode";
+import {
+  getAllTransactionsAPI,
+  getAllTransactionsResponse,
+  createTerminalAPI,
+  createTerminalResponse,
+  getAllTerminalsAPI,
+  getAllTerminalsResponse,
+} from "@site/src/data/SquadPosDocs/data";
+
+# API Documentation
+
+:::caution Authorization
+Any request made without the authorization key (secret key) will fail with a 401 (Unauthorized) response code.
+:::
+
+:::info
+The authorization key is sent via the request header as Bearer Token Authorization
+:::
+
+**Example:**
+Authorization: Bearer sandbox_sk_94f2b798466408ef4d19e848ee1a4d1a3e93f104046f
+
+### Get all Transactions
+
+This API allows you get all your SquadPOS transactions
+
+<Accordion
+  items={getAllTransactionsAPI}
+  parameters={true}
+  endpoint={
+    "https://sandbox-api-d.squadco.com/softpos/transactions?perPage&page"
+  }
+  method={"GET"}
+  header={"Allows you get all your Squad POS transactions"}
+/>
+
+<AccordionCode items={getAllTransactionsResponse} />
+
+### Create Terminal
+
+This API allows yopu create multiple SquadPOS terminals which are associated to your squad account
+
+<Accordion
+  items={createTerminalAPI}
+  parameters={true}
+  endpoint={"https://sandbox-api-d.squadco.com/softpos/terminal"}
+  method={"POST"}
+/>
+
+<AccordionCode items={createTerminalResponse} />
+
+#### Sample Request
+
+```js
+{
+    "name": "Sample name",
+    "email": "Sample@email.com",
+    "phone": "090123456789",
+    "location_id": 1
+}
+```
+
+### Get all Terminals
+
+This API allows you see all SquadPOS terminals created and associated to your account.
+
+<Accordion
+  items={getAllTerminalsAPI}
+  parameters={true}
+  endpoint={"https://sandbox-api-d.squadco.com/softpos/terminals"}
+  method={"GET"}
+/>
+
+<AccordionCode items={getAllTerminalsResponse} />
+
+### GO LIVE - Production
+
+To Use this API on production:
+
+1. Kindly change the base URL of the endpoint from sandbox-api-d.squadco.com to api-d.squadco.com
+2. Get production keys from your production environment on dashboard.squadco.com and replace as authorization keys.:::

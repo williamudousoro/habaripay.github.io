@@ -1,0 +1,238 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #b30033;
+  --ifm-color-primary-dark: #a1002e;
+  --ifm-color-primary-darker: #98002b;
+  --ifm-color-primary-darkest: #7d0024;
+  --ifm-color-primary-light: #c50038;
+  --ifm-color-primary-lighter: #ce003b;
+  --ifm-color-primary-lightest: #e90042;
+  --ifm-code-font-size: 92%;
+  --ifm-background-color: !important;
+  --docusaurus-highlighted-code-line-bg: rgba(147, 178, 244, 0.38) !important;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #fb799e;
+  --ifm-color-primary-dark: #fa5584;
+  --ifm-color-primary-darker: #f94377;
+  --ifm-color-primary-darkest: #f80d50;
+  --ifm-color-primary-light: #fc9db8;
+  --ifm-color-primary-lighter: #fdafc5;
+  --ifm-color-primary-lightest: #fee5ec;
+  /* --ifm-background-color: #161616 !important;Z */
+  --ifm-background-color: #151a1f !important;
+}
+
+.nav-font-size {
+  font-size: 0.95rem;
+}
+
+.nav-link_login {
+  font-weight: 500;
+  white-space: nowrap;
+  color: #e51e56 !important;
+  background-color: transparent;
+  border: 1px solid #e51e56;
+  margin: 0 15px;
+  padding-bottom: 4.5px;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+[data-theme="dark"] .nav-link_login {
+  color: #ffffff !important;
+  background-color: #e51e56;
+  border: none;
+}
+
+.nav-link_getting-started:hover {
+  color: #fff;
+  background-color: #d62356;
+}
+
+[data-theme="dark"] .theme-doc-sidebar-container {
+  border-right: 0.1px solid rgb(65, 64, 64);
+  font-size: 0.95rem;
+}
+
+[data-theme="dark"] .navbar {
+  /* background-color: #161616; */
+  background-color: #151a1f;
+  font-size: 0.95rem;
+  padding: 8px 22px;
+  border-bottom: 0.1px solid rgb(65, 64, 64);
+}
+[data-theme="light"] .theme-doc-sidebar-container {
+  border-right: 1px solid #2d48753d;
+  font-size: 0.95rem;
+  background: #f6fafb;
+}
+
+[data-theme="light"] .navbar {
+  background-color: #fcfeff;
+  font-size: 0.95rem;
+  padding: 8px 22px;
+  box-shadow: 0px 4px 4px 0px rgba(208, 208, 208, 0.25);
+}
+
+[data-theme="dark"] .card {
+  background-color: #191919;
+  transition: 0.2s ease all;
+}
+
+[data-theme="dark"] .card:hover {
+  border: none;
+  background-color: #262626;
+  transition: 0.3s ease-in all;
+}
+
+[data-theme="light"] .card:hover {
+  border: none;
+  background-color: #fbfbfb;
+  transition: 0.2s ease all;
+}
+
+.navbar__link {
+  color: #2d4875;
+  font-size: 14px;
+}
+
+[data-theme="dark"] .navbar__link {
+  color: #cfd7e1;
+}
+
+button.clean-btn svg {
+  color: #2d4875;
+}
+
+[data-theme="dark"] button.clean-btn svg {
+  color: #cfd7e1;
+}
+
+.menu__link {
+  font-size: 14px;
+  padding-block: 10px;
+  color: #2d4875;
+  font-weight: 400;
+}
+
+[data-theme="dark"] .menu__link {
+  color: #cfd7e1;
+}
+
+a.menu__link--sublist-caret::after {
+  color: red !important;
+}
+
+/* toggleButton_node_modules-@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module" */
+
+a.menu__link.menu__link--sublist.menu__link--sublist-care {
+  outline: 50px solid red;
+}
+#__docusaurus
+  > nav
+  > div.navbar__inner
+  > div.navbar__items.navbar__items--right
+  > div.toggle_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module.colorModeToggle_node_modules-\@docusaurus-theme-classic-lib-theme-Navbar-Content-styles-module {
+  order: -1;
+}
+
+.menu__link--sublist-caret:after {
+  background-size: 20px;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: transparent;
+  color: #e51e56;
+  border-left: 3px solid #e51e56;
+  border-radius: 0;
+  transition: all ease 0.1s;
+}
+
+.pagination-nav {
+  border-top: 1px solid rgba(45, 72, 117, 0.24);
+}
+
+.pagination-nav__link {
+  border: none;
+}
+
+.pagination-nav__label {
+  color: #475569;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+[data-theme="dark"] .pagination-nav__label {
+  color: #e2e8ef;
+}
+
+.pagination-nav__sublabel {
+  display: none;
+}
+
+.markdown h1:first-child {
+  color: #0b3142;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .markdown h1:first-child {
+  color: #e2e8ef;
+}
+
+[data-theme="dark"] .markdown > h5 {
+  color: #94a3b8;
+}
+
+.markdown > pre,
+.markdown > ul,
+.markdown > p {
+  color: #475569;
+}
+
+[data-theme="dark"] .markdown > pre,
+[data-theme="dark"] .markdown > ul,
+[data-theme="dark"] .markdown > p {
+  color: #e2e8ef;
+}
+
+.markdown > h5 {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(45, 72, 117, 0.7);
+}
+
+[data-theme="dark"] .markdown > h5 {
+  color: #94a3b8;
+}
+
+/* .alert--warning {
+    --ifm-alert-background-color: #FEEDD6;
+    border: 1px solid #F3DFC3;
+}
+
+.alert--info {
+    --ifm-alert-background-color: #E9F7FF;
+    border: 1px solid #A5D0E9;
+} */
+/* 
+pre code, .codeBlock_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module{
+  background: #1E293B;
+} */
+
+.codeBlockContainer_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Container-styles-module {
+  margin-bottom: 0 !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
