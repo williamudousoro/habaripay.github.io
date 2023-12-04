@@ -1,12 +1,40 @@
 import React, { useState } from "react";
 import CodeBlock from "@theme/CodeBlock";
+import Dropdown from "./Dropdown";
 
 const ApiTest = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [amount, setAmount] = useState("");
   const [email, setEmail] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("cURL");
 
-  let code = `Curl https://api.squad.co/payment/Initiate
+  let nodeCode = `Curl https://api.squad.co/payment/Initiate
+-H "Authorization: Bearer sk_test_DEFAULT"
+-H "Content-Type: application/json" 
+${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
+  email ? email + " " : "_ "
+}"}`}
+-X POST 
+
+
+
+
+`;
+
+  let dartCode = `Curl https://api.squad.co/payment/Initiate
+-H "Authorization: Bearer sk_test_DEFAULT"
+-H "Content-Type: application/json" 
+${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
+  email ? email + " " : "_ "
+}"}`}
+-X POST 
+
+
+
+
+`;
+
+  let curlCode = `Curl https://api.squad.co/payment/Initiate
 -H "Authorization: Bearer sk_test_DEFAULT"
 -H "Content-Type: application/json" 
 ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
@@ -59,7 +87,7 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
             api.squad.co/payment/Initiate
           </p>
         </div>
-        <div className=" group">
+        {/* <div className=" group">
           <div className="flex">
             <p className="text-[#3F826D] text-[10px] md:text-xs dark:text-[#4CB393]">
               cURL
@@ -79,7 +107,11 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
             <p className="pt-3 hover:bg-gray-200 rounded">Javascript</p>
             <p className="font-medium">Dart</p>
           </div>
-        </div>
+        </div> */}
+        <Dropdown
+          selectedLanguage={selectedLanguage}
+          setSelectedLanguage={setSelectedLanguage}
+        />
       </div>
       <div className="pt-8">
         <h4 className="text-[#0B3142] leading-3 dark:text-[#E2E8EF]">
@@ -130,7 +162,7 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
           </button>
         </div>
         <div className="">
-          <CodeBlock className="language-jsx">{code}</CodeBlock>
+          <CodeBlock className="language-jsx">{curlCode}</CodeBlock>
         </div>
         <div></div>
       </div>
