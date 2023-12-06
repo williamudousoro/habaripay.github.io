@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import CodeBlock from "@theme/CodeBlock";
 import Dropdown from "./Dropdown";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const ApiTest = () => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -8,26 +11,41 @@ const ApiTest = () => {
   const [email, setEmail] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("cURL");
 
-  let nodeCode = `Curl https://api.squad.co/payment/Initiate
--H "Authorization: Bearer sk_test_DEFAULT"
--H "Content-Type: application/json" 
-${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
-  email ? email + " " : "_ "
-}"}`}
--X POST 
+  let nodeCode = `
+  const axios = require('axios');
+  ${`let data = JSON.stringify({
+    "amount": ${amount},
+    "email": ${email},
+    "currency": "NGN",
+    "initiate_type": "inline",
+    "CallBack_URL": "https://www.linkedin.com/"
+  });`} 
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://test-api.squadinc.co/payment/Initiate',
+  headers: { 
+    'Authorization': 'AABBCCDDEEFFGGHHJJKK', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 
 
 
 
 `;
 
-  let dartCode = `Curl https://api.squad.co/payment/Initiate
--H "Authorization: Bearer sk_test_DEFAULT"
--H "Content-Type: application/json" 
-${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
-  email ? email + " " : "_ "
-}"}`}
--X POST 
+  let dartCode = `dart
 
 
 
@@ -46,6 +64,15 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
 
 
 `;
+
+  const schema = yup.object({
+    username: yup.string().required("Username is required"),
+    email: yup
+      .string()
+      .email("Email format is not valid")
+      .required("Email is required"),
+    channel: yup.string().required("Channel is required"),
+  });
 
   function initWidget() {
     console.log("fired here");
@@ -133,6 +160,7 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
               type="number"
               placeholder="e.g 10000"
               value={amount}
+              required
               onChange={(e) => setAmount(e.target.value)}
               className="rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent"
             />
@@ -148,6 +176,7 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
               id="email"
               type="email"
               placeholder="e.g example@email.com"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent"
