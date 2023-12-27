@@ -308,22 +308,20 @@ export const verifyTransactionResponse = [
     status: "401:Unauthorized",
     responseMsg: "Unauthorized Request",
     pill: colors?.orangeColor,
-    code: `//sending a request without an authorization key
-            {
-                "success": false,
-                "message": "",
-                "data": {}
+    code: `{
+            "success": false,
+            "message": "",
+            "data": {}
 }`,
   },
   {
     status: "403:Forbidden",
     responseMsg: "Invalid API Key",
     pill: colors?.orangeColor,
-    code: `//sending a request with an Invalid key
-            {
-                "success": false,
-                "message": "API key is invalid. Key must start with sandbox_sk_",
-                "data": {}
+    code: `{
+            "success": false,
+            "message": "API key is invalid. Key must start with sandbox_sk_",
+            "data": {}
 }`,
   },
 ];

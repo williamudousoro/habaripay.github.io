@@ -1,87 +1,88 @@
-import {colors} from "../constants"
+import { colors } from "../constants";
 
 //API Specifications
 
 export const customerModelApi = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "first_name",
-                dataType: "String",
-                description: "customer first name",
-                required: true,
-            },
-            {
-                key: "last_name",
-                dataType: "String",
-                description: "customer last name",
-                required: true
-            },
-            {
-                key: "middle_name",
-                dataType: "String",
-                description: "customer middle name",
-                required: false
-            },
-            {
-                key: "mobile_num",
-                dataType: "String",
-                description: "08012345678 (doesn't take more than 11 digits)",
-                required: true
-            },
-            {
-                key: "dob",
-                dataType: "Date",
-                description: "dd/mm/yyyy",
-                required: true
-            },
-            {
-                key: "email",
-                dataType: "String",
-                description: "customer email",
-                required: false
-            },
-            {
-                key: "bvn",
-                dataType: "String",
-                description: "BVN is compulsory",
-                required: true
-            },
-            {
-                key: "gender",
-                dataType: "String",
-                description: "'1' - Male, '2' -Female",
-                required: true
-            },
-            {
-                key: "address",
-                dataType: "String",
-                description: "customer address",
-                required: true
-            },
-             {
-                key: "customer_identifier",
-                dataType: "String",
-                description: "unique customer identifier as given by merchant",
-                required: true
-            },
-            {
-                key: "beneficiary_account",
-                dataType: "String",
-                description: "Beneficiary Account is the 10 Digit Bank Account Number (GTBank) provided by the Merchant where money sent to this Virtual account is paid into. Please note that when beneficiary account is not provided, money paid into this virtual account go into your wallet and will be paid out/settled in T+1 settlement time.",
-                required: false
-            }
-        ],
-    }
-]
+  {
+    title: "Body",
+    children: [
+      {
+        key: "first_name",
+        dataType: "String",
+        description: "customer first name",
+        required: true,
+      },
+      {
+        key: "last_name",
+        dataType: "String",
+        description: "customer last name",
+        required: true,
+      },
+      {
+        key: "middle_name",
+        dataType: "String",
+        description: "customer middle name",
+        required: false,
+      },
+      {
+        key: "mobile_num",
+        dataType: "String",
+        description: "08012345678 (doesn't take more than 11 digits)",
+        required: true,
+      },
+      {
+        key: "dob",
+        dataType: "Date",
+        description: "dd/mm/yyyy",
+        required: true,
+      },
+      {
+        key: "email",
+        dataType: "String",
+        description: "customer email",
+        required: false,
+      },
+      {
+        key: "bvn",
+        dataType: "String",
+        description: "BVN is compulsory",
+        required: true,
+      },
+      {
+        key: "gender",
+        dataType: "String",
+        description: "'1' - Male, '2' -Female",
+        required: true,
+      },
+      {
+        key: "address",
+        dataType: "String",
+        description: "customer address",
+        required: true,
+      },
+      {
+        key: "customer_identifier",
+        dataType: "String",
+        description: "unique customer identifier as given by merchant",
+        required: true,
+      },
+      {
+        key: "beneficiary_account",
+        dataType: "String",
+        description:
+          "Beneficiary Account is the 10 Digit Bank Account Number (GTBank) provided by the Merchant where money sent to this Virtual account is paid into. Please note that when beneficiary account is not provided, money paid into this virtual account go into your wallet and will be paid out/settled in T+1 settlement time.",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const customerModelResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success Response",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success Response",
+    pill: colors?.greenColor,
+    code: `{
             "customer_identifier": "CCC",
             "first_name": "Techzilla- Joesph",
             "last_name": "Okoye",
@@ -92,75 +93,77 @@ export const customerModelResponse = [
             "address": "22 Kota street, UK",
             "gender": "1",
             "beneficiary_account": "4920299492"
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API keys",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API keys",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const BusinessModelApi = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "bvn",
-                dataType: "String",
-                description: "Bank Verification Number",
-                required: true,
-            },
-            {
-                key: "business_name",
-                dataType: "String",
-                description: "Name of Business/Customer",
-                required: true
-            },
-            {
-                key: "customer_identifier",
-                dataType: "String",
-                description: "An alphanumeric string used to identify a customer/business in your system which will be tied to the virtual account being created",
-                required: true
-            },
-            {
-                key: "mobile_num",
-                dataType: "String",
-                description: "Customer's Phone Number Sample: 08012345678 (doesn't take more than 11 digits)",
-                required: true
-            },
-            {
-                key: "beneficiary_account",
-                dataType: "Date",
-                description: "Beneficiary Account is your 10 Digit Bank Account Number (GTBank) where money sent to this Virtual account is paid into. Please note that when beneficiary account is not provided, money paid into this virtual account go into your wallet and will be paid out/settled in T+1 settlement time.",
-                required: false
-            },
-            
-        ],
-    }
-]
+  {
+    title: "Body",
+    children: [
+      {
+        key: "bvn",
+        dataType: "String",
+        description: "Bank Verification Number",
+        required: true,
+      },
+      {
+        key: "business_name",
+        dataType: "String",
+        description: "Name of Business/Customer",
+        required: true,
+      },
+      {
+        key: "customer_identifier",
+        dataType: "String",
+        description:
+          "An alphanumeric string used to identify a customer/business in your system which will be tied to the virtual account being created",
+        required: true,
+      },
+      {
+        key: "mobile_num",
+        dataType: "String",
+        description:
+          "Customer's Phone Number Sample: 08012345678 (doesn't take more than 11 digits)",
+        required: true,
+      },
+      {
+        key: "beneficiary_account",
+        dataType: "Date",
+        description:
+          "Beneficiary Account is your 10 Digit Bank Account Number (GTBank) where money sent to this Virtual account is paid into. Please note that when beneficiary account is not provided, money paid into this virtual account go into your wallet and will be paid out/settled in T+1 settlement time.",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const BusinessModelResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -173,68 +176,68 @@ export const BusinessModelResponse = [
                 "customer_identifier": "Tech910260",
                 "created_at": "2023-08-07T13:18:21.287Z",
                 "updated_at": "2023-08-07T13:18:21.287Z"
-            }
-        }`
-    },
-     {
-        status: "400:Bad Request",
-        responseMsg: "Bad Request",
-        pill: colors?.orangeColor,
-        code: `{
+            }
+}`,
+  },
+  {
+    status: "400:Bad Request",
+    responseMsg: "Bad Request",
+    pill: colors?.orangeColor,
+    code: `{
             "status": 400,
             "success": false,
             "message": "\"customer_identifier\" is required",
             "data": {}
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No API key",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No API key",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid Authorization key or token",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid Authorization key or token",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const getWebhookErrorLogApi = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "page",
-                dataType: "Integer",
-                description: "The page you are on",
-                required: false,
-            },
-            {
-                key: "perPage",
-                dataType: "Integer",
-                description: "Number of records you want to appear on a page",
-                required: false
-            },           
-        ],
-    }
-]
+  {
+    title: "Query",
+    children: [
+      {
+        key: "page",
+        dataType: "Integer",
+        description: "The page you are on",
+        required: false,
+      },
+      {
+        key: "perPage",
+        dataType: "Integer",
+        description: "Number of records you want to appear on a page",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const getWebhookErrorLogResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Response description",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Response description",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -267,157 +270,160 @@ export const getWebhookErrorLogResponse = [
                     }
                 ]
             }
-        }`
-    },
-     {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const deleteWebhookErrorLogApi = [
-    {
-        title: "Path",
-        children: [
-            {
-                key: "transaction_ref",
-                dataType: "String",
-                description: "Unique Transaction Ref that identifies each virtual account and gotten from the retrieved webhook error log",
-                required: true,
-            },           
-        ],
-    }
-]
+  {
+    title: "Path",
+    children: [
+      {
+        key: "transaction_ref",
+        dataType: "String",
+        description:
+          "Unique Transaction Ref that identifies each virtual account and gotten from the retrieved webhook error log",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const deleteWebhookErrorLogResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
             "data": 1
-        }`
-    },
-     {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-     {
-        status: "403:Forbidden",
-        responseMsg: "Wrong/Invalid API Keys",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Wrong/Invalid API Keys",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const queryCustomerTransactionApi = [
-    {
-        title: "Path",
-        children: [
-            {
-                key: "customer_identifier",
-                dataType: "String",
-                description: "Unique Customer Identifier that identifies each virtual account",
-                required: false,
-            },           
-        ],
-    }
-]
+  {
+    title: "Path",
+    children: [
+      {
+        key: "customer_identifier",
+        dataType: "String",
+        description:
+          "Unique Customer Identifier that identifies each virtual account",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const queryAllMerchantTransactionsApi = [
-    {
-        title: "No Parameters",
-    }
-]
+  {
+    title: "No Parameters",
+  },
+];
 
 export const queryAllMerchantTransactionsMultipleFiltersApi = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "page",
-                dataType: "Integer",
-                description: "Page Number to Display",
-                required: false,
-            },  
-            {
-                key: "perPage",
-                dataType: "Integer",
-                description: "Number of records per Page",
-                required: false,
-            }, 
-            {
-                key: "virtualAccount",
-                dataType: "Integer",
-                description: "a unique 10-digit virtual account number",
-                required: false,
-            },  
-            {
-                key: "customerIdentifier",
-                dataType: "String",
-                description: "Unique Identifier used to create/identify a customer's virtual account",
-                required: false,
-            }, 
-            {
-                key: "startDate",
-                dataType: "Date",
-                description: "MM-DD-YYYY E.G: 09-19-2022",
-                required: false,
-            }, 
-            {
-                key: "endDate",
-                dataType: "Date",
-                description: "MM-DD-YYYY E.G: 09-19-2022",
-                required: false,
-            },
-            {
-                key: "transactionReference",
-                dataType: "String",
-                description: "Unique Identifier of a transaction",
-                required: false,
-            }, 
-            {
-                key: "session_id",
-                dataType: "String",
-                description: "Unique ID that identifies all NIP transactions",
-                required: false,
-            }, 
-            {
-                key: "dir",
-                dataType: "String",
-                description: "Takes two possible values: 'DESC' and 'ASC'. 'DESC' - descending order ,'ASC' - ascending order",
-                required: false,
-            }, 
-                     
-        ],
-    }
-]
+  {
+    title: "Query",
+    children: [
+      {
+        key: "page",
+        dataType: "Integer",
+        description: "Page Number to Display",
+        required: false,
+      },
+      {
+        key: "perPage",
+        dataType: "Integer",
+        description: "Number of records per Page",
+        required: false,
+      },
+      {
+        key: "virtualAccount",
+        dataType: "Integer",
+        description: "a unique 10-digit virtual account number",
+        required: false,
+      },
+      {
+        key: "customerIdentifier",
+        dataType: "String",
+        description:
+          "Unique Identifier used to create/identify a customer's virtual account",
+        required: false,
+      },
+      {
+        key: "startDate",
+        dataType: "Date",
+        description: "MM-DD-YYYY E.G: 09-19-2022",
+        required: false,
+      },
+      {
+        key: "endDate",
+        dataType: "Date",
+        description: "MM-DD-YYYY E.G: 09-19-2022",
+        required: false,
+      },
+      {
+        key: "transactionReference",
+        dataType: "String",
+        description: "Unique Identifier of a transaction",
+        required: false,
+      },
+      {
+        key: "session_id",
+        dataType: "String",
+        description: "Unique ID that identifies all NIP transactions",
+        required: false,
+      },
+      {
+        key: "dir",
+        dataType: "String",
+        description:
+          "Takes two possible values: 'DESC' and 'ASC'. 'DESC' - descending order ,'ASC' - ascending order",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const queryAllMerchantTransactionsMultipleFiltersResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
     "status": 200,
     "success": true,
     "message": "Success",
@@ -631,61 +637,62 @@ export const queryAllMerchantTransactionsMultipleFiltersResponse = [
         ],
         "query": {}
     }
-}`
-    },
-     {
-        status: "400:Bad Request",
-        responseMsg: "Wrong/ Invalid Input",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "400:Bad Request",
+    responseMsg: "Wrong/ Invalid Input",
+    pill: colors?.orangeColor,
+    code: `{
         "status": 400,
         "success": false,
         "message": "\"virtualAccount\" is not allowed to be empty",
         "data": {}
-    }`
-    },
-     {
-        status: "401:Unauthorized",
-        responseMsg: "No API Keys",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No API Keys",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-     {
-        status: "403:Forbidden",
-        responseMsg: "Invalid Keys/Token",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid Keys/Token",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const customerDetailsByVirtualAccountNumberApi = [
-    {
-        title: "Path",
-        children: [
-            {
-                key: "virtual_account_number",
-                dataType: "String",
-                description: "Unique 10-digit virtual account number assigned to a customer",
-                required: true,
-            },                     
-        ],
-    }
-]
+  {
+    title: "Path",
+    children: [
+      {
+        key: "virtual_account_number",
+        dataType: "String",
+        description:
+          "Unique 10-digit virtual account number assigned to a customer",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const customerDetailsByVirtualAccountNumberResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Valid Virtual Account Number",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Valid Virtual Account Number",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -697,119 +704,121 @@ export const customerDetailsByVirtualAccountNumberResponse = [
                 "customer_identifier": "CCtyttytC",
                 "virtual_account_number": "0686786837"
             }
-        }`
-    },
-     {
-        status: "404:Not Found",
-        responseMsg: "Invalid Virtual Account Number",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "404:Not Found",
+    responseMsg: "Invalid Virtual Account Number",
+    pill: colors?.orangeColor,
+    code: `{
             "status": 404,
             "success": false,
             "message": "Virtual account not found",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const customerDetailsUsingCustomerIdentifierApi = [
-    {
-        title: "Path",
-        children: [
-            {
-                key: "customer_identifier",
-                dataType: "String",
-                description: "Unique Customer Identifier that identifies each virtual account",
-                required: false,
-            },                     
-        ],
-    }
-]
+  {
+    title: "Path",
+    children: [
+      {
+        key: "customer_identifier",
+        dataType: "String",
+        description:
+          "Unique Customer Identifier that identifies each virtual account",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const updateCustomerBVNAndUnfreezeTransactionApi = [
-    {
-        title: "Path",
-        children: [
-            {
-                key: "customer_bvn",
-                dataType: "String",
-                description: "Bank Verification Number of Customer",
-                required: true,
-            }, 
-            {
-                key: "customer_identifier",
-                dataType: "String",
-                description: "Unique number given to customer by merchant.",
-                required: true,
-            },
-            {
-                key: "phone_number",
-                dataType: "String",
-                description: "customer's phone number",
-                required: true,
-            },                    
-        ],
-    }
-]
+  {
+    title: "Path",
+    children: [
+      {
+        key: "customer_bvn",
+        dataType: "String",
+        description: "Bank Verification Number of Customer",
+        required: true,
+      },
+      {
+        key: "customer_identifier",
+        dataType: "String",
+        description: "Unique number given to customer by merchant.",
+        required: true,
+      },
+      {
+        key: "phone_number",
+        dataType: "String",
+        description: "customer's phone number",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const queryAllMerchantVirtualAccountsApi = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "page",
-                dataType: "String",
-                description: "Number of Pages",
-                required: false,
-            }, 
-            {
-                key: "perPage",
-                dataType: "String",
-                description: "Number of Accounts to be returned per page",
-                required: false,
-            },
-            {
-                key: "startDate",
-                dataType: "Date",
-                description: "YY-MM-DD",
-                required: false,
-            },  
-            {
-                key: "EndDate",
-                dataType: "Date",
-                description: "YY-MM-DD",
-                required: false,
-            },                   
-        ],
-    }
-]
+  {
+    title: "Query",
+    children: [
+      {
+        key: "page",
+        dataType: "String",
+        description: "Number of Pages",
+        required: false,
+      },
+      {
+        key: "perPage",
+        dataType: "String",
+        description: "Number of Accounts to be returned per page",
+        required: false,
+      },
+      {
+        key: "startDate",
+        dataType: "Date",
+        description: "YY-MM-DD",
+        required: false,
+      },
+      {
+        key: "EndDate",
+        dataType: "Date",
+        description: "YY-MM-DD",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const updateBeneficiaryAccountApi = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "beneficiary_account",
-                dataType: "String",
-                description: "10 digit valid NUBAN account number",
-                required: true,
-            },
-            {
-                key: "virtual_account_number",
-                dataType: "String",
-                description: "The Virtual account number whose beneficiary account is to be updated",
-                required: true,
-            },                     
-        ],
-    }
-]
+  {
+    title: "Body",
+    children: [
+      {
+        key: "beneficiary_account",
+        dataType: "String",
+        description: "10 digit valid NUBAN account number",
+        required: true,
+      },
+      {
+        key: "virtual_account_number",
+        dataType: "String",
+        description:
+          "The Virtual account number whose beneficiary account is to be updated",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const updateBeneficiaryAccountResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Successful",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Successful",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -820,108 +829,108 @@ export const updateBeneficiaryAccountResponse = [
                 "beneficiary_account": "1234567890",
                 "customer_identifier": "2086601683696"
             }
-        }`
-    },
-     {
-        status: "400:Bad Request",
-        responseMsg: "Bad Request",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "400:Bad Request",
+    responseMsg: "Bad Request",
+    pill: colors?.orangeColor,
+    code: `{
             "status": 400,
             "success": false,
             "message": "\"virtual_account_number\" is required",
             "data": {}
-        }`
-    },
-     {
-        status: "401:Unauthorized",
-        responseMsg: "No/Invalid API Key",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No/Invalid API Key",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const simulatePaymentApi = [
-    {
-        title: "Header",
-        children: [
-            {
-                key: "content-type",
-                dataType: "String",
-                description: "application/json",
-                required: true,
-            },
-            {
-                key: "Authorization",
-                dataType: "String",
-                description: "Private Key or Secret Key (Gotten from your dashboard)",
-                required: true,
-            },                     
-        ],
-    },
-    {
-        title: "Body",
-        children: [
-            {
-                key: "virtual_account_number",
-                dataType: "String",
-                description: "Virtual Account number of customer that wants to make payment.",
-                required: true,
-            },
-            {
-                key: "amount",
-                dataType: "String",
-                description: "Simulated Amount",
-                required: true,
-            },                     
-        ],
-    }
-]
+  {
+    title: "Header",
+    children: [
+      {
+        key: "content-type",
+        dataType: "String",
+        description: "application/json",
+        required: true,
+      },
+      {
+        key: "Authorization",
+        dataType: "String",
+        description: "Private Key or Secret Key (Gotten from your dashboard)",
+        required: true,
+      },
+    ],
+  },
+  {
+    title: "Body",
+    children: [
+      {
+        key: "virtual_account_number",
+        dataType: "String",
+        description:
+          "Virtual Account number of customer that wants to make payment.",
+        required: true,
+      },
+      {
+        key: "amount",
+        dataType: "String",
+        description: "Simulated Amount",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const simulatePaymentResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Successful",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Successful",
+    pill: colors?.greenColor,
+    code: `{
             "success": true,
             "message": "Success",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
-
-//Encryption & Decryption 
+//Encryption & Decryption
 
 export const javascriptData = [
-    {
-        language: "Javascript",
-        headerOne: "Encryption",
-        headerTwo: "Decryption",
-        codeOne: ` let key = crypto.createHash('sha256').update(String(merchant_secret_key)).digest('base64').substr(0, 32);
+  {
+    language: "Javascript",
+    headerOne: "Encryption",
+    headerTwo: "Decryption",
+    codeOne: ` let key = crypto.createHash('sha256').update(String(merchant_secret_key)).digest('base64').substr(0, 32);
                 let IV = crypto.createHash('sha256').update(String(merchant_public_key)).digest('base64').substr(0, 16);
                 const cipher = crypto.createCipheriv('aes256', key, IV);
                 let encrypted = cipher.update(JSON.stringify(body), 'utf8', 'base64');
                 return encrypted += cipher.final('base64');
                 `,
-        codeTwo: ` let key = crypto.createHash('sha256').update(String(merchant_secret_key)).digest('base64').substr(0, 32);
+    codeTwo: ` let key = crypto.createHash('sha256').update(String(merchant_secret_key)).digest('base64').substr(0, 32);
                 let IV = crypto.createHash('sha256').update(String(merchant_public_key)).digest('base64').substr(0, 16);
                 const decipher = crypto.createDecipheriv('aes256', key, IV);
                 let decrypted = decipher.update(body, 'base64', 'utf8');
                 decrypted += decipher.final('utf8');
-                return JSON.parse(decrypted);`
-    },
-]
+                return JSON.parse(decrypted);`,
+  },
+];
 
 export const pythonData = [
-    {
-        language: "Python",
-        codeOne: `from Crypto.Cipher import AES
+  {
+    language: "Python",
+    codeOne: `from Crypto.Cipher import AES
                 import base64
                 import hashlib
 
@@ -940,14 +949,14 @@ export const pythonData = [
 
                 if __name__ == '__main__':
                     print('Python encrypt: ' + base64.b64encode(encrypt_token('dmyz.org')))
-                    print('Python decrypt: ' + decrypt_token(base64.b64decode('FSfhJ/gk3iEJOPVLyFVc2Q==')))`
-    },
-]
+                    print('Python decrypt: ' + decrypt_token(base64.b64decode('FSfhJ/gk3iEJOPVLyFVc2Q==')))`,
+  },
+];
 
 export const phpData = [
-    {
-        language: "PHP",
-        codeOne: ` <?php
+  {
+    language: "PHP",
+    codeOne: ` <?php
 
             class AES
             {
@@ -989,14 +998,14 @@ export const phpData = [
             echo ('PHP decrypt: '.$aes->decryptToken('Ajc/9TOSwbz1lTReb7BTo4XjL7bzJ0GWIxuncvSXfK83ZsYFt4bOt5+QQRz0jFFNSf6+7Axuqp91rR7aD/YwYczQQgUM+7QrK7nTw1KJbwTvPSSk3/IEektOlUx7DK7uXHlBBN9eVmn8tfDLKrsgj7zhymQhCfCoUTcDou3UyYWbKitwGH0o2X3hZo7cVqqq6Khnb12EwlK2kVhZvAjnu5g+T7erI1+RSb3jjab0MguWO6I3oXs9OGsiQKmCqZn564/q3ojArjk5OR8r3jBFgH4d96FoXS536rS8Toh5KPIVSGUjXLthcsWdgQ2VNzqBJ2iktzftFNgQRMdxQFCpaE0JwTKVkAyX0n3JDXt7DC+cTY+cHvAHRtl0zYhhrqT0WX4x95h+/WCdT27FEIJJJqJPBPHS1VAXwPS/v5sPGqdkqgFngTrYPaExk3YWoTxhonzT2tkagsGCaDuk8eptSA==', 'staging_sk_sample-secret-key-1', 'staging_pk_sample-public-key-1'))."\n";
 
             ?>
-                `
-    },
-]
+                `,
+  },
+];
 
 export const cSharpData = [
-    {
-        language: "C#",
-        codeOne: `using System;  
+  {
+    language: "C#",
+    codeOne: `using System;  
                 using System.IO;  
                 using System.Security.Cryptography;  
                 class ManagedAesSample {  
@@ -1065,119 +1074,122 @@ export const cSharpData = [
                         }  
                         return plaintext;  
                     }  
-                }  `
-    },
-]
+}  `,
+  },
+];
 
 //Dynamic Virtual Account
 
 export const createDynamicVAAccountsResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
             "data": {}
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const getPoolCountResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
             "data": {
                 "count_dynamic_virtual_account": 8
             }
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API Keys",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API Keys",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const initiateDynamicVATransactionApi = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "amount",
-                dataType: "Integer",
-                description: "Amount is in Kobo",
-                required: true,
-            },
-            {
-                key: "duration",
-                dataType: "Integer",
-                description: "Time allowed before an account/transaction is expired. Duration is in seconds. i.e duration:60 = 1 minute",
-                required: true,
-            }, 
-            {
-                key: "email",
-                dataType: "string",
-                description: "a valid email address for notification to customer",
-                required: true,
-            },{
-                key: "transaction_ref",
-                dataType: "string",
-                description: "Unique transaction Reference that identifies the transaction on your system",
-                required: true,
-            },                    
-        ],
-    }
-]
+  {
+    title: "Body",
+    children: [
+      {
+        key: "amount",
+        dataType: "Integer",
+        description: "Amount is in Kobo",
+        required: true,
+      },
+      {
+        key: "duration",
+        dataType: "Integer",
+        description:
+          "Time allowed before an account/transaction is expired. Duration is in seconds. i.e duration:60 = 1 minute",
+        required: true,
+      },
+      {
+        key: "email",
+        dataType: "string",
+        description: "a valid email address for notification to customer",
+        required: true,
+      },
+      {
+        key: "transaction_ref",
+        dataType: "string",
+        description:
+          "Unique transaction Reference that identifies the transaction on your system",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const initiateDynamicVATransactionResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -1191,50 +1203,51 @@ export const initiateDynamicVATransactionResponse = [
                 "bank": "GTBank",
                 "currency": "NGN"
             }
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-        {
-        status: "403:Forbidden",
-        responseMsg: "Wrong/Invalid API Keys",
-        pill: colors?.greenColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Wrong/Invalid API Keys",
+    pill: colors?.greenColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const reQueryTransactionApi = [
-    {
-        title: "Path",
-        children: [
-            {
-                key: "transaction_reference",
-                dataType: "String",
-                description: "Merchant's transaction reference passed when initiating / generating the dynamic virtual account.",
-                required: true,
-            },                  
-        ],
-    }
-]
+  {
+    title: "Path",
+    children: [
+      {
+        key: "transaction_reference",
+        dataType: "String",
+        description:
+          "Merchant's transaction reference passed when initiating / generating the dynamic virtual account.",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const reQueryTransactionResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -1261,62 +1274,64 @@ export const reQueryTransactionResponse = [
                     }
                 ]
             }
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-        {
-        status: "403:Forbidden",
-        responseMsg: "Wrong/Invalid API Keys",
-        pill: colors?.greenColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Wrong/Invalid API Keys",
+    pill: colors?.greenColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
- export const editAmountOrDurationApi = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "transaction_reference",
-                dataType: "String",
-                description: "The transaction ref of the already initiated transaction.",
-                required: true,
-            },  
-            {
-                key: "amount",
-                dataType: "Integer",
-                description: "Amount is in Kobo",
-                required: false,
-            }, 
-            {
-                key: "duration",
-                dataType: "Integer",
-                description: "Amount of time before transaction expires. Duration is in seconds.",
-                required: false,
-            },                 
-        ],
-    }
-]
+export const editAmountOrDurationApi = [
+  {
+    title: "Body",
+    children: [
+      {
+        key: "transaction_reference",
+        dataType: "String",
+        description:
+          "The transaction ref of the already initiated transaction.",
+        required: true,
+      },
+      {
+        key: "amount",
+        dataType: "Integer",
+        description: "Amount is in Kobo",
+        required: false,
+      },
+      {
+        key: "duration",
+        dataType: "Integer",
+        description:
+          "Amount of time before transaction expires. Duration is in seconds.",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const editAmountOrDurationResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -1327,98 +1342,99 @@ export const editAmountOrDurationResponse = [
                 "expires_at": "2023-08-30T17:01:46.973Z",
                 "transaction_reference": "ify21"
             }
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Wrong/Invalid API Keys",
-        pill: colors?.greenColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Wrong/Invalid API Keys",
+    pill: colors?.greenColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-    {
-        status: "404:Not Found",
-        responseMsg: "Invalid Transaction Ref",
-        pill: colors?.greenColor,
-        code: `{
+}`,
+  },
+  {
+    status: "404:Not Found",
+    responseMsg: "Invalid Transaction Ref",
+    pill: colors?.greenColor,
+    code: `{
             "status": 404,
             "success": false,
             "message": "Transaction not found",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
- export const simulatePaymentEndpointApi = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "virtual_account_number",
-                dataType: "String",
-                description: "10-digit Dynamic Account gotten after initiating a virtual transfer. ",
-                required: true,
-            },  
-            {
-                key: "amount",
-                dataType: "String",
-                description: "Amount is in naira. This is the expected amount to be transferred into the dynamic virtual account.",
-                required: true,
-            }, 
-            {
-                key: "dva",
-                dataType: "boolean",
-                description: "true",
-                required: true,
-            },                 
-        ],
-    }
-]
+export const simulatePaymentEndpointApi = [
+  {
+    title: "Body",
+    children: [
+      {
+        key: "virtual_account_number",
+        dataType: "String",
+        description:
+          "10-digit Dynamic Account gotten after initiating a virtual transfer. ",
+        required: true,
+      },
+      {
+        key: "amount",
+        dataType: "String",
+        description:
+          "Amount is in naira. This is the expected amount to be transferred into the dynamic virtual account.",
+        required: true,
+      },
+      {
+        key: "dva",
+        dataType: "boolean",
+        description: "true",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const simulatePaymentEndpointResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors?.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
             "data": "Payment successful"
-        }`
-    },
-    {
-        status: "401:Unauthorized",
-        responseMsg: "No Authorization",
-        pill: colors?.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Wrong/Invalid API Keys",
-        pill: colors?.greenColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Wrong/Invalid API Keys",
+    pill: colors?.greenColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    }
-]
-
+}`,
+  },
+];

@@ -1,33 +1,31 @@
-import {colors} from "../constants"
-
+import { colors } from "../constants";
 
 export const vendAirtimeAPI = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "phone_number",
-                dataType: "String",
-                description: "11 digit phone number. Format: : '08139011943'",
-                required: true,
-            },
-            {
-                key: "amount",
-                dataType: "Integer",
-                description: "Amount is in Naira.",
-                required: true
-            },
-        ],
-    }
-]
-
+  {
+    title: "Body",
+    children: [
+      {
+        key: "phone_number",
+        dataType: "String",
+        description: "11 digit phone number. Format: : '08139011943'",
+        required: true,
+      },
+      {
+        key: "amount",
+        dataType: "Integer",
+        description: "Amount is in Naira.",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const vendAirtimeResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{ 
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
             "status": 200, 
             "success": true, 
             "message": "Success", 
@@ -45,57 +43,57 @@ export const vendAirtimeResponse = [
                 "meta": "{\"vending_status\":\"pending\",\"status_code\":\"301\",\"message\":\"pending confirmation\",\"phonenumber\":\"08139011943\",\"transaction_id\":\"app_08139011943_5000_1690387362399\",\"network\":\"MTN\"}", 
                 "createdAt": "2023-07-26T16:02:43.341Z" 
             } 
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const vendDataBundlesAPI = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "phone_number",
-                dataType: "String",
-                description: "11 digit phone number. Format: : '08139011943'",
-                required: true,
-            },
-            {
-                key: "plan_code",
-                dataType: "String",
-                description: "The plan code is gotten from the Get Plan Code endpoint and usually in the format: '1001'",
-                required: true
-            },
-        ],
-    }
-]
-
+  {
+    title: "Body",
+    children: [
+      {
+        key: "phone_number",
+        dataType: "String",
+        description: "11 digit phone number. Format: : '08139011943'",
+        required: true,
+      },
+      {
+        key: "plan_code",
+        dataType: "String",
+        description:
+          "The plan code is gotten from the Get Plan Code endpoint and usually in the format: '1001'",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const vendDataBundlesResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{ 
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
             "status": 200, 
             "success": true, 
             "message": "Success", 
@@ -113,51 +111,50 @@ export const vendDataBundlesResponse = [
                 "meta": "{\"vending_status\":\"success\",\"status_code\":\"200\",\"message\":\"successfully submitted for processing\",\"phonenumber\":\"07062918558\",\"transaction_id\":\"edf867fa-8ad6-4eac-bd87-6e5f8ec9b945\",\"network\":\"MTN\"}", 
                 "createdAt": "2023-03-27T10:50:04.073Z" 
             } 
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const getDataBundlesAPI = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "network",
-                dataType: "String",
-                description: "Teleco ID: MTN, GLO, AIRTEL, 9MOBILE",
-                required: true,
-            },
-        ],
-    }
-]
-
+  {
+    title: "Query",
+    children: [
+      {
+        key: "network",
+        dataType: "String",
+        description: "Teleco ID: MTN, GLO, AIRTEL, 9MOBILE",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const getDataBundlesResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{ 
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
             "status": 200, 
             "success": true, 
             "message": "Success", 
@@ -208,63 +205,62 @@ export const getDataBundlesResponse = [
                     "network": "MTN" 
                 } 
             ] 
-        } `
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization",
-        pill: colors.orangeColor,
-        code: `{
+} `,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const getAllTransactionsAPI = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "page",
-                dataType: "Integer",
-                description: "The page of the transaction you want to view",
-                required: false,
-            },
-            {
-                key: "perPage",
-                dataType: "Integer",
-                description: "Number of transaction you want to view per page",
-                required: false,
-            },
-            {
-                key: "action",
-                dataType: "string",
-                description: "The type of transaction you want to see: 'debit'",
-                required: false,
-            },
-        ],
-    }
-]
-
+  {
+    title: "Query",
+    children: [
+      {
+        key: "page",
+        dataType: "Integer",
+        description: "The page of the transaction you want to view",
+        required: false,
+      },
+      {
+        key: "perPage",
+        dataType: "Integer",
+        description: "Number of transaction you want to view per page",
+        required: false,
+      },
+      {
+        key: "action",
+        dataType: "string",
+        description: "The type of transaction you want to see: 'debit'",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const getAllTransactionsResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Response description",
-        pill: colors.greenColor,
-        code: `{ 
+  {
+    status: "200:OK",
+    responseMsg: "Response description",
+    pill: colors.greenColor,
+    code: `{ 
             "status": 200, 
             "success": true, 
             "message": "Success", 
@@ -329,28 +325,26 @@ export const getAllTransactionsResponse = [
                     } 
                 ] 
             } 
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "Response description",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "Response description",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "403:Forbidden",
-        responseMsg: "Response description",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Response description",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
-
-
+}`,
+  },
+];

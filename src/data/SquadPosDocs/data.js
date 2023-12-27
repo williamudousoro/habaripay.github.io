@@ -1,57 +1,56 @@
-import {colors} from "../constants"
-
+import { colors } from "../constants";
 
 export const getAllTransactionsAPI = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "perPage",
-                dataType: "Integer",
-                description: "Number of transactions per page",
-                required: true,
-            },
-            {
-                key: "page",
-                dataType: "Integer",
-                description: "page number",
-                required: true
-            },
-            {
-                key: "date_from",
-                dataType: "date",
-                description: "Format : YYYY-MM-DD, Start Date",
-                required: false
-            },
-            {
-                key: "date_to",
-                dataType: "date",
-                description: "Format : YYYY-MM-DD, End Date",
-                required: false
-            },
-            {
-                key: "sort_by",
-                dataType: "String",
-                description: "Sorting Parameter. This can have a value of 'createdAt'",
-                required: false
-            },
-            {
-                key: "sort_by_dir",
-                dataType: "String",
-                description: "This arranges the transactions in ascending or descending order. Possible values are 'ASC' - ascending order, 'DESC' - descending order",
-                required: false
-            },
-        ],
-    }
-]
-
+  {
+    title: "Query",
+    children: [
+      {
+        key: "perPage",
+        dataType: "Integer",
+        description: "Number of transactions per page",
+        required: true,
+      },
+      {
+        key: "page",
+        dataType: "Integer",
+        description: "page number",
+        required: true,
+      },
+      {
+        key: "date_from",
+        dataType: "date",
+        description: "Format : YYYY-MM-DD, Start Date",
+        required: false,
+      },
+      {
+        key: "date_to",
+        dataType: "date",
+        description: "Format : YYYY-MM-DD, End Date",
+        required: false,
+      },
+      {
+        key: "sort_by",
+        dataType: "String",
+        description: "Sorting Parameter. This can have a value of 'createdAt'",
+        required: false,
+      },
+      {
+        key: "sort_by_dir",
+        dataType: "String",
+        description:
+          "This arranges the transactions in ascending or descending order. Possible values are 'ASC' - ascending order, 'DESC' - descending order",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const getAllTransactionsResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -156,81 +155,81 @@ export const getAllTransactionsResponse = [
                     }
                 ]
             }
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No API key",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No API key",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "404:Not Found",
-        responseMsg: "Not Profiled for SquadPOS",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "404:Not Found",
+    responseMsg: "Not Profiled for SquadPOS",
+    pill: colors.orangeColor,
+    code: `{
             "status": 404,
             "success": false,
             "message": "Merchant does not exist",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const createTerminalAPI = [
-    {
-        title: "Header",
-        children: [
-            {
-                key: "content-type",
-                dataType: "String",
-                description: "application/json",
-                required: true,
-            },
-        ],
-    },
-    {
-        title: "Body",
-        children: [
-            {
-                key: "email",
-                dataType: "String",
-                description: "unique email to be associated to the terminal being created",
-                required: true,
-            },
-            {
-                key: "name",
-                dataType: "String",
-                description: "Name to be associated to the terminal",
-                required: true
-            },
-            {
-                key: "phone",
-                dataType: "String",
-                description: "11 digit phone number to be associated to the terminal",
-                required: true
-            },
-            {
-                key: "location_id",
-                dataType: "Integer",
-                description: "unique ID that identifies a particular location",
-                required: true
-            },
-        ],
-    }
-]
-
+  {
+    title: "Header",
+    children: [
+      {
+        key: "content-type",
+        dataType: "String",
+        description: "application/json",
+        required: true,
+      },
+    ],
+  },
+  {
+    title: "Body",
+    children: [
+      {
+        key: "email",
+        dataType: "String",
+        description:
+          "unique email to be associated to the terminal being created",
+        required: true,
+      },
+      {
+        key: "name",
+        dataType: "String",
+        description: "Name to be associated to the terminal",
+        required: true,
+      },
+      {
+        key: "phone",
+        dataType: "String",
+        description: "11 digit phone number to be associated to the terminal",
+        required: true,
+      },
+      {
+        key: "location_id",
+        dataType: "Integer",
+        description: "unique ID that identifies a particular location",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const createTerminalResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -246,94 +245,94 @@ export const createTerminalResponse = [
                 "deletedAt": null,
                 "merchant_id": null
             }
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No API key",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No API key",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "404:Not Found",
-        responseMsg: "Not Profiled for SquadPOS",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "404:Not Found",
+    responseMsg: "Not Profiled for SquadPOS",
+    pill: colors.orangeColor,
+    code: `{
             "status": 404,
             "success": false,
             "message": "Merchant does not exist",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const getAllTerminalsAPI = [
-    {
-        title: "Query",
-        children: [
-            {
-                key: "perPage",
-                dataType: "Integer",
-                description: "Number of results per page",
-                required: true,
-            },
-            {
-                key: "page",
-                dataType: "Integer",
-                description: "Page Number",
-                required: true
-            },
-            {
-                key: "location_id",
-                dataType: "Integer",
-                description: "an ID that identifies a location",
-                required: false
-            },
-            {
-                key: "sort_by",
-                dataType: "String",
-                description: "Sorting Parameter. This can have a value of 'createdAt'",
-                required: false
-            },
-            {
-                key: "sort_by_dir",
-                dataType: "String",
-                description: "This arranges the transactions in ascending or descending order. Possible values are 'ASC' - ascending order, 'DESC' - descending order",
-                required: false
-            },
-            {
-                key: "date_from",
-                dataType: "date",
-                description: "Format : YYYY-MM-DD, Start Date",
-                required: false
-            },
-            {
-                key: "date_to",
-                dataType: "date",
-                description: "Format : YYYY-MM-DD End Date",
-                required: false
-            },
-            {
-                key: "active",
-                dataType: "Boolean",
-                description: "It takes a value of 'True' or 'False'",
-                required: false
-            },
-        ],
-    }
-]
-
+  {
+    title: "Query",
+    children: [
+      {
+        key: "perPage",
+        dataType: "Integer",
+        description: "Number of results per page",
+        required: true,
+      },
+      {
+        key: "page",
+        dataType: "Integer",
+        description: "Page Number",
+        required: true,
+      },
+      {
+        key: "location_id",
+        dataType: "Integer",
+        description: "an ID that identifies a location",
+        required: false,
+      },
+      {
+        key: "sort_by",
+        dataType: "String",
+        description: "Sorting Parameter. This can have a value of 'createdAt'",
+        required: false,
+      },
+      {
+        key: "sort_by_dir",
+        dataType: "String",
+        description:
+          "This arranges the transactions in ascending or descending order. Possible values are 'ASC' - ascending order, 'DESC' - descending order",
+        required: false,
+      },
+      {
+        key: "date_from",
+        dataType: "date",
+        description: "Format : YYYY-MM-DD, Start Date",
+        required: false,
+      },
+      {
+        key: "date_to",
+        dataType: "date",
+        description: "Format : YYYY-MM-DD End Date",
+        required: false,
+      },
+      {
+        key: "active",
+        dataType: "Boolean",
+        description: "It takes a value of 'True' or 'False'",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const getAllTerminalsResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -426,27 +425,27 @@ export const getAllTerminalsResponse = [
                     }
                 ]
             }
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No API key",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No API key",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-    {
-        status: "404:Not Found",
-        responseMsg: "Not Profiled",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "404:Not Found",
+    responseMsg: "Not Profiled",
+    pill: colors.orangeColor,
+    code: `{
             "status": 404,
             "success": false,
             "message": "Merchant does not exist",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];

@@ -1,33 +1,31 @@
-import {colors} from "../constants"
-
+import { colors } from "../constants";
 
 export const accountLookupAPI = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "bank_code",
-                dataType: "String",
-                description: "Unique NIP code that identifies a bank. ",
-                required: true,
-            },
-            {
-                key: "account_number",
-                dataType: "String",
-                description: "Account number you want to transfer to",
-                required: true
-            }
-        ],
-    }
-]
-
+  {
+    title: "Body",
+    children: [
+      {
+        key: "bank_code",
+        dataType: "String",
+        description: "Unique NIP code that identifies a bank. ",
+        required: true,
+      },
+      {
+        key: "account_number",
+        dataType: "String",
+        description: "Account number you want to transfer to",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const accountLookupResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -35,186 +33,187 @@ export const accountLookupResponse = [
                 "account_name": "JENNY SQUAD",
                 "account_number": "0123456789"
             }
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-     {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const errorCodeAPI = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "transaction_reference",
-                dataType: "String",
-                description: "Unique Transaction Reference used to initiate a transfer. Please ensure that you append your merchant ID to the transaction Reference you are creating. This is compulsory as it will throw an error if you don't append it.",
-                required: true,
-            },
-            {
-                key: "amount",
-                dataType: "String",
-                description: "Amount to be transferred. Value is in Kobo.",
-                required: true
-            },
-            {
-                key: "bank_code",
-                dataType: "String",
-                description: "Unique NIP Code that identifies a bank. ",
-                required: true
-            },
-            {
-                key: "account_number",
-                dataType: "String",
-                description: "10-digit NUBAN account number to be transferred to. Must be an account that has been looked up and vetted to be transferred to.",
-                required: true
-            },
-            {
-                key: "account_name",
-                dataType: "String",
-                description: "The account name tied to the account number you are transferring to which you have looked up using our look up API.",
-                required: true
-            },
-            {
-                key: "currency_id",
-                dataType: "String",
-                description: "Takes only the value 'NGN'",
-                required: true
-            },
-            {
-                key: "remark",
-                dataType: "String",
-                description: "A unique remark that will be sent with the transfer.",
-                required: true
-            },
-            
-        ],
-    }
-]
-
+  {
+    title: "Body",
+    children: [
+      {
+        key: "transaction_reference",
+        dataType: "String",
+        description:
+          "Unique Transaction Reference used to initiate a transfer. Please ensure that you append your merchant ID to the transaction Reference you are creating. This is compulsory as it will throw an error if you don't append it.",
+        required: true,
+      },
+      {
+        key: "amount",
+        dataType: "String",
+        description: "Amount to be transferred. Value is in Kobo.",
+        required: true,
+      },
+      {
+        key: "bank_code",
+        dataType: "String",
+        description: "Unique NIP Code that identifies a bank. ",
+        required: true,
+      },
+      {
+        key: "account_number",
+        dataType: "String",
+        description:
+          "10-digit NUBAN account number to be transferred to. Must be an account that has been looked up and vetted to be transferred to.",
+        required: true,
+      },
+      {
+        key: "account_name",
+        dataType: "String",
+        description:
+          "The account name tied to the account number you are transferring to which you have looked up using our look up API.",
+        required: true,
+      },
+      {
+        key: "currency_id",
+        dataType: "String",
+        description: "Takes only the value 'NGN'",
+        required: true,
+      },
+      {
+        key: "remark",
+        dataType: "String",
+        description: "A unique remark that will be sent with the transfer.",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const errorCodeResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization",
-        pill: colors.orangeColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-     {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const reQueryTransferAPI = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "transaction_reference",
-                dataType: "String",
-                description: "Unique Transaction Reference used to initiate a transfer. Please ensure that you append your merchant ID to the transaction Reference you are creating. This is compulsory as it will throw an error if you don't append it.",
-                required: true,
-            },
-        ],
-    }
-]
-
+  {
+    title: "Body",
+    children: [
+      {
+        key: "transaction_reference",
+        dataType: "String",
+        description:
+          "Unique Transaction Reference used to initiate a transfer. Please ensure that you append your merchant ID to the transaction Reference you are creating. This is compulsory as it will throw an error if you don't append it.",
+        required: true,
+      },
+    ],
+  },
+];
 
 export const reQueryTransferResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization",
-        pill: colors.orangeColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-     {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
+}`,
+  },
+];
 
 export const allTransfersAPI = [
-    {
-        title: "Body",
-        children: [
-            {
-                key: "page",
-                dataType: "Integer",
-                description: "Number of Pages",
-                required: false,
-            },
-            {
-                key: "perPage",
-                dataType: "Integer",
-                description: "Number of records per page",
-                required: false
-            },
-            {
-                key: "dir",
-                dataType: "String",
-                description: "Allows you sort the records in either ascending or descending order. It takes the value 'ASC' or 'DESC'",
-                required: false
-            }
-        ],
-    }
-]
-
+  {
+    title: "Body",
+    children: [
+      {
+        key: "page",
+        dataType: "Integer",
+        description: "Number of Pages",
+        required: false,
+      },
+      {
+        key: "perPage",
+        dataType: "Integer",
+        description: "Number of records per page",
+        required: false,
+      },
+      {
+        key: "dir",
+        dataType: "String",
+        description:
+          "Allows you sort the records in either ascending or descending order. It takes the value 'ASC' or 'DESC'",
+        required: false,
+      },
+    ],
+  },
+];
 
 export const allTransfersResponse = [
-    {
-        status: "200:OK",
-        responseMsg: "Success",
-        pill: colors.greenColor,
-        code: `{
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
             "status": 200,
             "success": true,
             "message": "Success",
@@ -297,27 +296,26 @@ export const allTransfersResponse = [
                     "switch_transaction": null
                 }
             ]
-        }`
-    },
-    {
-        status: "401:Unathorized",
-        responseMsg: "No Authorization",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "401:Unathorized",
+    responseMsg: "No Authorization",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "",
             "data": {}
-        }`
-    },
-     {
-        status: "403:Forbidden",
-        responseMsg: "Invalid/Wrong API Keys",
-        pill: colors.orangeColor,
-        code: `{
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Invalid/Wrong API Keys",
+    pill: colors.orangeColor,
+    code: `{
             "success": false,
             "message": "Merchant authentication failed",
             "data": {}
-        }`
-    },
-]
-
+}`,
+  },
+];
