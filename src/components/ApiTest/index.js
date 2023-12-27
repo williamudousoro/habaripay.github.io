@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { twMerge } from "tailwind-merge";
 
 const ApiTest = () => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -13,66 +14,77 @@ const ApiTest = () => {
 
   let nodeCode = `
   const axios = require('axios');
-  ${`let data = JSON.stringify({
-    "amount": ${amount},
-    "email": ${email},
+  let data = JSON.stringify({
+    "amount":${amount ? amount + "," : "_ ,"}
+    "email":${email ? email + " " : "_ "},
     "currency": "NGN",
     "initiate_type": "inline",
-    "CallBack_URL": "https://www.linkedin.com/"
-  });`} 
-
-let config = {
-  method: 'post',
-  maxBodyLength: Infinity,
-  url: 'https://test-api.squadinc.co/payment/Initiate',
-  headers: { 
-    'Authorization': 'AABBCCDDEEFFGGHHJJKK', 
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
-
-
-
-
-`;
-
-  let dartCode = `dart
-
-
-
-
-`;
-
-  let curlCode = `Curl https://api.squad.co/payment/Initiate
--H "Authorization: Bearer sk_test_DEFAULT"
--H "Content-Type: application/json" 
-${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
-  email ? email + " " : "_ "
-}"}`}
--X POST 
-
-
-
-
-`;
-
-  const schema = yup.object({
-    username: yup.string().required("Username is required"),
-    email: yup
-      .string()
-      .email("Email format is not valid")
-      .required("Email is required"),
-    channel: yup.string().required("Channel is required"),
+    "CallBack_URL": "https://www.linkedin.com/",
+    "is_recurring": true
   });
+  
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: 'https://qa-api.squadinc.co/payment/Initiate',
+    headers: { 
+      'Authorization': '47M3DMZD', 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+  
+  axios.request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+  
+`;
+
+  let dartCode = `
+  var headers = {
+    'Authorization': '47M3DMZD',
+    'Content-Type': 'application/json'
+  };
+  var request = http.Request('POST', Uri.parse('https://qa-api.squadinc.co/payment/Initiate'));
+  request.body = json.encode({
+    "amount":${amount ? amount + "," : "_ ,"}
+    "email":${email ? email + " " : "_ "},
+    "currency": "NGN",
+    "initiate_type": "inline",
+    "CallBack_URL": "https://www.linkedin.com/",
+    "is_recurring": true
+  });
+  request.headers.addAll(headers);
+  
+  http.StreamedResponse response = await request.send();
+  
+  if (response.statusCode == 200) {
+    print(await response.stream.bytesToString());
+  }
+  else {
+    print(response.reasonPhrase);
+  }
+  
+`;
+
+  let curlCode = `
+  curl --location 'https://qa-api.squadinc.co/payment/Initiate' 
+  --header 'Authorization: 47M3DMZD'
+  --header 'Content-Type: application/json'
+  --data-raw '{
+    "amount":${amount ? amount + "," : "_ ,"}
+    "email":${email ? email + " " : "_ "},
+      "currency":"NGN",
+      "initiate_type": "inline",
+      "CallBack_URL" : "https://www.linkedin.com/",
+      "is_recurring": true
+  }
+  '
+`;
 
   function initWidget() {
     console.log("fired here");
@@ -81,7 +93,9 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
       amount: Number(amount),
       email: email,
       currency_code: "NGN",
-      key: "test_pk_sample-public-key-1",
+      key: "qa_pk_sample-public-key-1",
+      is_recurring: true,
+      initiate_type: "inline",
     };
 
     const squadInstance = new window.squad({
@@ -103,6 +117,17 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
     squadInstance.open();
   }
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    initWidget();
+  };
+
   return (
     <div className="flex flex-col justify-center align-middle border-2 border-solid border-[#EBEBF2] dark:border-[#303337] rounded-lg md:px-5 px-2">
       <div className="relative h-10 flex justify-between pt-3.5 text-[11px] md:text-[13px] leading-[10px]  border-b-2 border-0 border-solid border-[#EBEBF2] dark:border-b-[#303337]">
@@ -114,27 +139,6 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
             api.squad.co/payment/Initiate
           </p>
         </div>
-        {/* <div className=" group">
-          <div className="flex">
-            <p className="text-[#3F826D] text-[10px] md:text-xs dark:text-[#4CB393]">
-              cURL
-            </p>
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 448 512"
-                className="fill-[#008488] dark:fill-[#4CB393] ml-1 mt-[2px]"
-              >
-                <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
-              </svg>
-            </span>
-          </div>
-          <div className="invisible opacity-0 right-1 top-9 absolute z-20 duration-100 group-hover:opacity-100 group-hover:visible transition-all bg-white py-2 rounded">
-            <p className="pt-3 hover:bg-gray-200 rounded">Javascript</p>
-            <p className="font-medium">Dart</p>
-          </div>
-        </div> */}
         <Dropdown
           selectedLanguage={selectedLanguage}
           setSelectedLanguage={setSelectedLanguage}
@@ -150,48 +154,85 @@ ${`-d{"amount":${amount ? amount + "," : "_ ,"} "email": "${
       </div>
       <div className="py-6 md:grid md:grid-cols-2 md:gap-9 items-center">
         <div className="">
-          <form className="text-base"></form>
-          <div className="flex flex-col">
-            <label className="pb-1 text-sm" htmlFor="amount">
-              Charge Amount
-            </label>
-            <input
-              id="amount"
-              type="number"
-              placeholder="e.g 10000"
-              value={amount}
-              required
-              onChange={(e) => setAmount(e.target.value)}
-              className="rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent"
-            />
-            <p className="text-xs pt-1 font-medium text-[#828282]">
-              minimum amount is 1000
-            </p>
-          </div>
-          <div className="flex flex-col">
-            <label className="pb-1 text-sm" htmlFor="email">
-              Customer Email Address
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="e.g example@email.com"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent"
-            />
-          </div>
-          <button
-            type="submit"
-            onClick={initWidget}
-            className="bg-[#e51e56] w-full hover:bg-[#d43d68] border-none text-white mt-7 mb-2 py-3 rounded-[4px] font-semibold cursor-pointer"
-          >
-            Send Request
-          </button>
+          <form className="text-base" onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex flex-col">
+              <label className="pb-1 text-sm" htmlFor="amount">
+                Charge Amount
+              </label>
+
+              <input
+                id="amount"
+                type="text"
+                placeholder="e.g 10000"
+                // value={amount}
+                {...register("amount", {
+                  required: "Amount is required",
+                  min: {
+                    value: 1000,
+                    message: "Please provide a value greater than 1000",
+                  },
+                  onChange: (e) => {
+                    setAmount(e.target.value);
+                  },
+                })}
+                // onChange={(e) => setAmount(e.target.value)}
+                className={twMerge(
+                  "rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent ",
+                  errors?.amount && "border-red-500"
+                )}
+              />
+              {errors.amount && (
+                <p className="text-red-600 text-xs m-0 p-0 pt-1 transition-all">
+                  {errors.amount.message}
+                </p>
+              )}
+
+              <p className="text-xs pt-1 font-medium text-[#828282]">
+                minimum amount is 1000
+              </p>
+            </div>
+            <div className="flex flex-col">
+              <label className="pb-1 text-sm" htmlFor="email">
+                Customer Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="e.g example@email.com"
+                {...register("email", {
+                  required: "Please provide a valid email",
+                  onChange: (e) => {
+                    setEmail(e.target.value);
+                  },
+                })}
+                className={twMerge(
+                  "rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent",
+                  errors?.email && "border-red-500"
+                )}
+              />
+              {errors.email && (
+                <p className="text-red-600 text-xs m-0 p-0 pt-1 transition-all">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+            <button
+              type="submit"
+              // onClick={initWidget}
+              className="bg-[#e51e56] w-full hover:bg-[#d43d68] border-none text-white mt-7 mb-2 py-3 rounded-[4px] font-semibold cursor-pointer"
+            >
+              Send Request
+            </button>
+          </form>
         </div>
         <div className="">
-          <CodeBlock className="language-jsx">{curlCode}</CodeBlock>
+          <CodeBlock className="language-jsx h-64 overflow-scroll">
+            {selectedLanguage === "cURL"
+              ? curlCode
+              : selectedLanguage === "Javascript"
+              ? nodeCode
+              : dartCode}
+          </CodeBlock>
         </div>
         <div></div>
       </div>
