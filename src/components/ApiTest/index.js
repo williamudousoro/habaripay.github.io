@@ -90,7 +90,7 @@ const ApiTest = () => {
     console.log("fired here");
 
     const params = {
-      amount: Number(amount),
+      amount: Number(amount) * 1000,
       email: email,
       currency_code: "NGN",
       key: "qa_pk_sample-public-key-1",
@@ -157,7 +157,7 @@ const ApiTest = () => {
           <form className="text-base" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col">
               <label className="pb-1 text-sm" htmlFor="amount">
-                Charge Amount
+                Charge Amount (₦)
               </label>
 
               <input
@@ -167,17 +167,13 @@ const ApiTest = () => {
                 // value={amount}
                 {...register("amount", {
                   required: "Amount is required",
-                  min: {
-                    value: 1000,
-                    message: "Please provide a value greater than 1000",
-                  },
                   onChange: (e) => {
                     setAmount(e.target.value);
                   },
                 })}
                 // onChange={(e) => setAmount(e.target.value)}
                 className={twMerge(
-                  "rounded-[4px] px-3 py-3 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent ",
+                  "rounded-[4px] px-3 py-3 mb-5 border-[#BDBDBD] border-solid border placeholder:text-[#828282] dark:bg-transparent ",
                   errors?.amount && "border-red-500"
                 )}
               />
@@ -186,10 +182,6 @@ const ApiTest = () => {
                   {errors.amount.message}
                 </p>
               )}
-
-              <p className="text-xs pt-1 font-medium text-[#828282]">
-                minimum amount is 1000
-              </p>
             </div>
             <div className="flex flex-col">
               <label className="pb-1 text-sm" htmlFor="email">
