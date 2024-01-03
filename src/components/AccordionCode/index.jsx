@@ -16,8 +16,11 @@ export const Toggle = ({ data }) => {
   };
 
   return (
-    <Wrapper className={`${classState} dark:border-b-[#303337] cursor-pointer`}>
-      <div className="grid grid-cols-[2fr_3fr_1fr]" onClick={onClick}>
+    <Wrapper
+      className={`${classState} dark:border-b-[#303337] cursor-pointer py-[14px] px-[35px]`}
+      onClick={onClick}
+    >
+      <div className="grid grid-cols-[2fr_3fr_1fr]">
         <div className="flex">
           <div
             className={twMerge(
@@ -61,22 +64,15 @@ export default function AccordionCode({ items }) {
 const Container = styled.div`
   border: 2px solid #ebebf2;
   border-radius: 8px;
-  padding: 14px 35px 15px;
   margin-top: 1.5rem;
 
   :last-child {
     border-bottom: none;
     margin-bottom: 0px;
-    padding-bottom: 0px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    padding: 10px 15px 15px;
   }
 `;
 
 const Wrapper = styled.div`
-  margin-bottom: 10px;
   border-bottom: 1px solid #f7f7f7;
   padding-bottom: 10px;
 
