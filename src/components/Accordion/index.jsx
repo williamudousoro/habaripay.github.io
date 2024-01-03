@@ -69,6 +69,13 @@ const Accordion = (props) => {
                                 <div className="text">
                                   <p className="tracking-widest border-0 border-solid border-b-3 border-red-100">
                                     {param?.key}
+                                    <span
+                                      className={`${
+                                        param?.required ? "hidden" : ""
+                                      } text-red-700 text-lg`}
+                                    >
+                                      *
+                                    </span>
                                   </p>
                                 </div>
                                 <div>
