@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <div className="grid grid-cols-2 grid-rows-2 gap-2 m-auto">
       <a
-        href="/Payments/Initiate-payment"
+        href="/Payments/overview"
         className={twMerge(
           "rounded-lg hover:no-underline text-center p-6 hover:bg-[#edf6f8] dark:hover:bg-[#353942]",
           "grid place-items-center hover:text-[#0B3142] dark:text-[#E2E8EF] text-[#0B3142] dark:bg-[#2C2F36] bg-[#F6FAFB]"
@@ -25,7 +25,7 @@ const Hero = () => {
         </p>
       </a>
       <a
-        href=""
+        href="Transfer-API/transfer-apis"
         className={twMerge(
           "rounded-lg hover:no-underline text-center p-6 hover:bg-[#edf6f8] dark:hover:bg-[#353942]",
           "grid place-items-center hover:text-[#0B3142] dark:text-[#E2E8EF] text-[#0B3142] dark:bg-[#2C2F36] bg-[#F6FAFB]"
@@ -40,7 +40,7 @@ const Hero = () => {
         </p>
       </a>
       <a
-        href=""
+        href="Payments/Initiate-payment"
         className={twMerge(
           "rounded-lg hover:no-underline text-center p-6 hover:bg-[#edf6f8] dark:hover:bg-[#353942]",
           "grid place-items-center hover:text-[#0B3142] dark:text-[#E2E8EF] text-[#0B3142] dark:bg-[#2C2F36] bg-[#F6FAFB]"
@@ -59,7 +59,7 @@ const Hero = () => {
         </p>
       </a>
       <a
-        href=""
+        href="Others/refund-api"
         className={twMerge(
           "rounded-lg hover:no-underline text-center p-6 hover:bg-[#edf6f8] dark:hover:bg-[#353942]",
           "grid place-items-center hover:text-[#0B3142] dark:text-[#E2E8EF] text-[#0B3142] dark:bg-[#2C2F36] bg-[#F6FAFB]"
