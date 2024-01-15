@@ -1,10 +1,14 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const PaymentImg = "/img/payments.svg";
-const TransferImg = "/img/transfer.svg";
-const RecurringImg = "/img/recurring.svg";
-const RefundImg = "/img/refunds.svg";
+const PaymentImg = `${process.env.REACT_APP_SOURCE_URL}/img/payments.svg`;
+const TransferImg = `${process.env.REACT_APP_SOURCE_URL}/img/transfer.svg`;
+const RecurringImg = `${process.env.REACT_APP_SOURCE_URL}/img/recurring.svg`;
+const RefundImg = `${process.env.REACT_APP_SOURCE_URL}/img/refunds.svg`;
+
+const BaseUrl = process.env.REACT_APP_SOURCE_URL;
+
+console.log(BaseUrl, "env");
 
 const Hero = () => {
   return (
