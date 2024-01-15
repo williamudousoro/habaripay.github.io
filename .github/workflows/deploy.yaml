@@ -1,12 +1,13 @@
+name: Deploy Squad Docs
+
 on:
   push:
     branches:
       - main # Change this to your default branch if it's different
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,9 +23,24 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build # Change this if your build output directory is different
-          
+          name: artifact
+          path: /
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+     - name: Get Build Artifacts
+       uses: actions/download-artifact@v4
+       with:
+         name: artifact # same as in build stage
+         path: /
+         
+     - name: Deploy to GitHub Pages
+       uses: peaceiris/actions-gh-pages@v3
+       with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         publish_dir: ./build
