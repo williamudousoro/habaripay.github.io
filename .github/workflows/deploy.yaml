@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: /
+          path: ./build
 
   deploy:
     needs: build
@@ -37,7 +37,7 @@ jobs:
        uses: actions/download-artifact@v4
        with:
          name: artifact # same as in build stage
-         path: /
+         path: ./build
          
      - name: Deploy to GitHub Pages
        uses: peaceiris/actions-gh-pages@v3
