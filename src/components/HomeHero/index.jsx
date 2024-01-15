@@ -1,10 +1,19 @@
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const PaymentImg = "/img/payments.svg";
-const TransferImg = "/img/transfer.svg";
-const RecurringImg = "/img/recurring.svg";
-const RefundImg = "/img/refunds.svg";
+// const sitCon = useDocusaurusContext();
+
+// console.log({ sitCon });
+
+const PaymentImg = "img/payments.svg";
+const TransferImg = "img/transfer.svg";
+const RecurringImg = "img/recurring.svg";
+const RefundImg = "img/refunds.svg";
+
+// const BaseUrl = sitCon?.siteConfig.REACT_APP_SOURCE_UR;
+
+// console.log(BaseUrl, "env");
 
 const Hero = () => {
   return (

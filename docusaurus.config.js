@@ -6,6 +6,8 @@
 
 import { themes as prismThemes } from "prism-react-renderer";
 
+require("dotenv").config();
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Squad API Docs",
@@ -13,7 +15,7 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://habaripay.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/squad-docs/",
@@ -32,6 +34,10 @@ const config = {
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
+  },
+
+  customFields: {
+    REACT_APP_SOURCE_URL: process.env.REACT_APP_SOURCE_URL,
   },
 
   scripts: [
