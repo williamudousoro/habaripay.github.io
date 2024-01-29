@@ -90,7 +90,7 @@ const ApiTest = () => {
     console.log("fired here");
 
     const params = {
-      amount: Number(amount) * 1000,
+      amount: Number(amount) * 100,
       email: email,
       currency_code: "NGN",
       key: "qa_pk_sample-public-key-1",
@@ -124,7 +124,6 @@ const ApiTest = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     initWidget();
   };
 
