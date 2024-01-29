@@ -1,11 +1,15 @@
 import React from "react";
-
-const UssdImg = "img/ussdModal.png";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage } from "@cloudinary/react";
 
 const UssdModalImg = () => {
+  const cld = new Cloudinary({ cloud: { cloudName: "delflsgq4" } });
   return (
     <div className="grid place-items-center w-full bg-[#F4F6F9] dark:bg-[#22282F] rounded-lg">
-      <img src={UssdImg} alt="Ussd Modal" className="w-[60%]" />
+      <AdvancedImage
+        className="w-[60%]"
+        cldImg={cld.image("squad-docs/ussdModal")}
+      />
     </div>
   );
 };
