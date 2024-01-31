@@ -4,7 +4,6 @@ import { AdvancedImage } from "@cloudinary/react";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard";
 
 function TestCard() {
-  const currentDate = new Date();
   const cld = new Cloudinary({ cloud: { cloudName: "delflsgq4" } });
 
   return (
