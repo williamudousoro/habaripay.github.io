@@ -145,7 +145,7 @@ a.menu__link.menu__link--sublist.menu__link--sublist-care {
   order: -1;
 }
 
-.menu__link--sublist-caret:after {
+.menu__link--sublist-caret::after {
   background-size: 20px;
 }
 
@@ -178,11 +178,19 @@ a.menu__link.menu__link--sublist.menu__link--sublist-care {
   }
 }
 
+.pagination-nav__label:hover {
+  color: #b30033;
+}
+
 [data-theme="dark"] .pagination-nav__label {
   color: #e2e8ef;
   &:hover {
     color: #fb799e;
   }
+}
+
+[data-theme="dark"] .pagination-nav__label:hover {
+  color: #fb799e;
 }
 
 .pagination-nav__sublabel {
