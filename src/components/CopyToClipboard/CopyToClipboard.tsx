@@ -37,7 +37,7 @@ export default function CopyToClipboard(props: Props) {
         ref={buttonRef}
         className={`invisible group-hover:visible opacity-0 group-hover:opacity-100 transition 
           bg-white text-normal/80 py-1 px-2.5 rounded absolute top-[50%] z-10 w-fit whitespace-nowrap text-sm 
-          border border-gray-700 custom-shadow-md`}
+          border border-gray-700 custom-shadow-md cursor-pointer`}
       >
         {text}
       </button>

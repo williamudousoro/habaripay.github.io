@@ -23,7 +23,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "squad", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  projectName: "habaripay.github.io", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -34,10 +34,6 @@ const config = {
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
-  },
-
-  customFields: {
-    REACT_APP_SOURCE_URL: process.env.REACT_APP_SOURCE_URL,
   },
 
   scripts: [
@@ -59,7 +55,8 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/HabariPay/habaripay.github.io/tree/main/",
+          // "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: false,
         theme: {

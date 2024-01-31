@@ -173,10 +173,16 @@ a.menu__link.menu__link--sublist.menu__link--sublist-care {
   color: #475569;
   font-weight: 500;
   font-size: 14px;
+  &:hover {
+    color: #b30033;
+  }
 }
 
 [data-theme="dark"] .pagination-nav__label {
   color: #e2e8ef;
+  &:hover {
+    color: #fb799e;
+  }
 }
 
 .pagination-nav__sublabel {
