@@ -60,13 +60,6 @@ export const initiatePaymentApi = [
         dataType: "String",
         description:
           "This states the method by which the transaction is initiated. At the moment, this can only take the value 'inline'.",
-        required: true,
-      },
-      {
-        key: "initiate_type",
-        dataType: "String",
-        description:
-          "An alphanumeric string that uniquely identifies a transaction",
         required: false,
       },
       {
@@ -103,9 +96,10 @@ export const initiatePaymentApi = [
         required: false,
       },
       {
-        key: "callback_url",
+        key: "sub_merchant_id",
         dataType: "String",
-        description: "Sample: http://squadco.com",
+        description:
+          "This is the ID of a meerchant that was created by an aggregator which allows the aggregator initiate a transaction on behalf of the submerchant. This parameter is an optional field that is passed only by a registered aggregator",
         required: false,
       },
     ],
@@ -251,6 +245,104 @@ export const chargeCardResponse = [
   },
 ];
 
+export const queryAllTransactionsApi = [
+  {
+    title: "Query",
+    children: [
+      {
+        key: "currency",
+        dataType: "string",
+        description: "transacting currency",
+        required: false,
+      },
+      {
+        key: "start_date",
+        dataType: "date",
+        description: "start date of transaction",
+        required: true,
+      },
+      {
+        key: "end_date",
+        dataType: "date",
+        description: "end date of transaction",
+        required: true,
+      },
+      {
+        key: "page",
+        dataType: "integer",
+        description: "number of transactions to be displayed in a page",
+        required: false,
+      },
+      {
+        key: "perpage",
+        dataType: "integer",
+        description: "number of transactions to be displayed in a page",
+        required: false,
+      },
+      {
+        key: "reference",
+        dataType: "string",
+        description: "transaction ref of a transaction",
+        required: false,
+      },
+    ],
+  },
+];
+
+export const queryAllTransactionsResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `"status": 200,
+    "success": true,
+    "message": "Success",
+    "data": [
+        {
+            "id": 589,
+            "transaction_amount": 500000,
+            "transaction_ref": "SQDEMO6384411820295800001",
+            "email": "demo@merchant.com",
+            "merchant_id": "AABBCCDDEEFFGGHHJJKK",
+            "merchant_amount": 495000,
+            "merchant_name": "Demo Habari Shop",
+            "merchant_business_name": "Ogbologba and Sons Limited",
+            "merchant_email": "demo@merchant.com",
+            "customer_email": "demo@merchant.com",
+            "customer_name": "Test QA",
+            "meta_data": "{\"ip_address\":\"154.113.177.121\",\"Customer_name\":\"Test QA\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36\",\"referring_site\":\"https://pay.squadinc.co/\",\"payment_link_id\":\"GH9Y19\",\"payment_link_type\":\"otp\",\"source\":\"Desktop\",\"device_id\":null,\"order_id\":null,\"auth_code\":null,\"fingerprintData\":null,\"callback_url\":null,\"initiate_type\":null,\"browser_screen_height\":695,\"browser_screen_width\":1536,\"referrer_url\":\"https://pay.squadinc.co/\",\"extra\":\"{}\"}",
+            "meta": {
+                "ip_address": [],
+                "Customer_name": [],
+                "user_agent": [],
+                "referring_site": [],
+                "payment_link_id": [],
+                "payment_link_type": [],
+                "source": [],
+                "device_id": [],
+                "order_id": [],
+                "auth_code": [],
+                "fingerprintData": [],
+                "callback_url": [],
+                "initiate_type": [],
+                "browser_screen_height": [],
+                "browser_screen_width": [],
+                "referrer_url": [],
+                "extra": []
+            },
+            "transaction_status": "success",
+            "transaction_charges": 0,
+            "transaction_currency_id": "NGN",
+            "transaction_gateway_id": "",
+            "transaction_type": "Card",
+            "flat_charge": 0,
+            "is_suspicious": false,
+            "is_refund": false,
+            "created_at": "2024-02-21T13:16:43.012+00:00"
+}`,
+  },
+];
+
 export const verifyTransactionApi = [
   {
     title: "Query",
@@ -322,6 +414,91 @@ export const verifyTransactionResponse = [
             "success": false,
             "message": "API key is invalid. Key must start with sandbox_sk_",
             "data": {}
+}`,
+  },
+];
+
+export const createSubMerchantsApi = [
+  {
+    title: "Body",
+    children: [
+      {
+        key: "display_name",
+        dataType: "String",
+        description: "Name of sub-merchant",
+        required: true,
+      },
+      {
+        key: "account_name",
+        dataType: "String",
+        description: "Sub-merchant's settlement bank account name",
+        required: true,
+      },
+      {
+        key: "account_number",
+        dataType: "String",
+        description: "Sub-merchant's settlement account number",
+        required: true,
+      },
+      {
+        key: "bank_code",
+        dataType: "String",
+        description: "Sub-merchant's settlement bank code. e.g 058",
+        required: true,
+      },
+      {
+        key: "bank",
+        dataType: "String",
+        description: "Name of sub-merchant's settlement bank e.g GTBank",
+        required: true,
+      },
+    ],
+  },
+];
+
+export const createSubMerchantsResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors?.greenColor,
+    code: `{
+      "status": 200,
+      "success": true,
+      "message": "Success",
+      "data": {
+          "account_id": "AGGERYG8WF34"
+      }
+}`,
+  },
+  {
+    status: "400:Bad Request",
+    responseMsg: "Error in request payload",
+    pill: colors?.orangeColor,
+    code: `{
+      "status": 400,
+      "success": false,
+      "message": "\"account_number\" is required",
+      "data": {}
+}`,
+  },
+  {
+    status: "401:Unauthorized",
+    responseMsg: "No Authorization",
+    pill: colors?.orangeColor,
+    code: `{
+      "success": false,
+      "message": "",
+      "data": {}
+}`,
+  },
+  {
+    status: "403:Forbidden",
+    responseMsg: "Wrong/Invalid API Keys",
+    pill: colors?.orangeColor,
+    code: `{
+      "success": false,
+      "message": "Merchant authentication failed",
+      "data": {}
 }`,
   },
 ];

@@ -71,7 +71,7 @@ const Accordion = (props) => {
                                     {param?.key}
                                     <span
                                       className={`${
-                                        param?.required ? "hidden" : ""
+                                        param?.required ? "" : "hidden"
                                       } text-red-700 text-lg`}
                                     >
                                       *

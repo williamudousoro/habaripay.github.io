@@ -1,0 +1,44 @@
+---
+sidebar_position: 5
+---
+
+import Accordion from "../../src/components/Accordion";
+import AccordionCode from "../../src/components/AccordionCode";
+import {
+  createSubMerchantsApi,
+  createSubMerchantsResponse,
+} from "@site/src/data/PaymentDocs/data.js";
+
+# Aggregator and Sub-merchants
+
+##### This API allows you to be profiled as an aggregator and also create sub-merchants dynamically under your account.
+
+##### With this, you are able to initiate transactions from a central point for all businesses or sub merchants under you using the same API keys.
+
+:::note
+
+**Authorization** Any request made without the authorization key (secret key) will fail with a 401 (Unauthorized) response code.
+
+:::
+
+:::info
+
+The authorization key is sent via the request header as Bearer Token Authorization
+
+:::
+
+**Example**:
+Authorization: Bearer sandbox_sk_94f2b798466408ef4d19e848ee1a4d1a3e93f104046f
+
+### Create Sub-merchants.
+
+This API is used to create a sub-merchant, the sub-merchant will have its own ID and will automatically have its own view on the dashboard.
+
+<Accordion
+  items={createSubMerchantsApi}
+  parameters={true}
+  endpoint={"https://sandbox-api-d.squadco.com/merchant/create-sub-users"}
+  method={"POST"}
+/>
+
+<AccordionCode items={createSubMerchantsResponse} />

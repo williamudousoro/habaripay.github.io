@@ -40,11 +40,11 @@ import {
 2. Retrieve keys from the bottom of the Get Started Page
 
 :::caution
-Authorization Any request made without the authorization key will fail with a 401 (Service Not Authorized) response code.
+**Authorization** Any request made without the authorization key will fail with a 401 (Service Not Authorized) response code.
 :::
 
 :::info
-Authorization would be done via Headers using Keys gotten from your dashboard.
+**Authorization** would be done via Headers using Keys gotten from your dashboard.
 :::
 
 **Example:**
@@ -55,60 +55,27 @@ This API specification helps you create a virtual account and also integrates pa
 You can also trace payments to virtual accounts and link them up with customer details.
 
 :::note
-Reconciliation: For instant settlement when using our Virtual Account, All merchant and beneficiary accounts must be GTCO Bank Accounts.
+**Reconciliation: For instant settlement when using our Virtual Account, All merchant and beneficiary accounts must be GTCO Bank Accounts.**
 :::
 
 ### Creating Virtual Account
 
 :::info
-You need to make a POST Request to a dedicated endpoint containing your customer information.
+**You need to make a POST Request to a dedicated endpoint** containing your customer information.
 :::
 
 #### IMPORTANT NOTICE
 
 :::note
-**Please note that there is a new compliance rule put in place to mitigate against fraud. As a result, all virtual accounts must carry a slug as a prefix to the name. The slug must be a portion of your business name or abbreviations of your business name as one word. Please note that slash (/) is not allowed and only hyphen (-) can be used.
-Please be informed that all accounts without the prefix will be flagged by our compliance team and might ultimately be closed.**
+**Please note that you are no longer required to pass a prefix when creating virtual accounts. Prefix are now automatically passed on our end. Kindly share your preferred prefix with your Technical Account Manager to configure before going Live. The prefix must be a portion of your business name or abbreviations of your business name as one word.**
 :::
-
-### Sample Request of create endpoint with Slug
-
-If my business name is TechZilla Solutions, then I will have to create my account with the format below:
-
-```
-Business Model
-{
-    "customer_identifier": "CCC",
-    "business_name": "Techzilla-Joseph Okoye",
-    "mobile_num": "08139011943",
-    "bvn": "12343211654",
-    "beneficiary_account": "4920299492"
-}
-
-
-Customer Model
-{
-    "customer_identifier": "CCC",
-    "first_name": "Techzilla- Joesph",
-    "last_name": "Okoye",
-    "mobile_num": "08139011943",
-    "email": "ayo@gmail.com",
-    "bvn": "12343211654",
-    "dob": "30/10/1990",
-    "address": "22 Kota street, UK",
-    "gender": "1",
-    "beneficiary_account": "4920299492"
-}
-```
 
 ### Customer Model
 
-#### IMPORTANT NOTICE
+**This endpoint is used to create virtual account for individuals/customer on your platform. Please note that there is a strict validation of the BVN against the names, Date of Birth and Phone Number. (B2C)**
 
-:::note
-**Please note that there is a new compliance rule put in place to mitigate against fraud. As a result, all virtual accounts must carry a slug as a prefix to the name. The slug must be a portion of your business name or abbreviations of your business name as one word. Please note that slash (/) is not allowed and only hyphen can be used.
-Please be informed that all accounts without the prefix will be flagged by our compliance and fraud team and might ultimately be closed.**
-:::
+**The implication of this is that if any of the details mentioned above doesn't tally with what you have on the BVN passed, an account will not be generated.
+Please note that you can create virtual accounts for individuals regardless of the type of bank you provided during KYC.**
 
 <Accordion
   items={customerModelApi}
@@ -194,27 +161,35 @@ Response expected from the API to signify if the request received was successful
 ```
 
 </TabItem>
+<TabItem value="identity-error" label="424: Identity Error">
+
+```js
+{
+"status": 424,
+"message": "{"status":424,"success":false,"message":"Identity verification failed. Kindly pass a valid Id to continue","data":{}}",
+"data": null
+}
+```
+
+</TabItem>
 </Tabs>
 
 ### Business Model
 
-This allows you to create virtual accounts for people whose customers are actually businesses (B2B) or other merchants and might not be able to provide all the necessary details that a customer should have.
+This API allows you to create virtual accounts for your customers who are businesses and not individuals. That is, these customers are actually businesses (B2B) or other merchants.
+Please note that due to CBN's Guidelines on validation before account creation as well as other related Fraud concerns, you are required to request for profiling before you can have access to create accounts for businesses.
+Once profiled, you can go ahead and keep creating accounts for your businesses.
 
-#### IMPORTANT NOTICE
-
-:::note
-**Please note that there is a new compliance rule put in place to mitigate against fraud. As a result, all virtual accounts must carry a slug as a prefix to the name. The slug must be a portion of your business name or abbreviations of your business name as one word. Please note that slash (/) is not allowed and only hyphen can be used.
-Please be informed that all accounts without the prefix will be flagged by our compliance and fraud team and might ultimately be closed.**
-:::
+**Please note that to create virtual accounts for BUSINESSES, your KYC account needs to be a GTB account number and is mapped to the BVN provided. This doesn't apply if you are creating for individuals. For clarity: you need GTB if you are creating accounts for other businesses say you want to create an account for Chicken Fish Limited but if you are creating for Individual say Emeka Joseph, you don't necessarily need to have a GTB account.**
 
 ### Sample Request
 
 ```
 {
     "customer_identifier": "CCC",
-    "business_name": "Joesph- Ayodele",
+    "business_name": "Chicken Limited",
     "mobile_num": "08139011943",
-    "bvn": "12343211654",
+    "bvn": "22110011001",
     "beneficiary_account": "4920299492"
 }
 ```
@@ -248,8 +223,6 @@ Upon registration and verification as a merchant, you are to create a Webhook an
 The webhook notification sent carry the x-squad-signature in the header. The hash value (x-squad-signature) is an HMAC SHA512 signature of the webhook payload signed using your secret key.
 
 You are expected to create a hash and compare the value of the hash created with the hash sent in the header of the POST request sent to your webhook URL.
-
-To create the hash, you use the entire payload sent via the webhook.
 
 To create the hash, you use the entire payload sent via the webhook.
 
@@ -415,6 +388,8 @@ To decrypt the hashed body, kindly visit our encryption and decryption page for 
 
 ```
 
+<br />
+
 :::note
 You are expected to send us a response confirming receipt of the request
 :::
@@ -473,11 +448,11 @@ This API allows you retrieve all your missed webhook transactions and use it to 
 - **Also, ensure you have a transaction duplicate checker to ensure you don't update a record twice or update a record you have updated using the webhook or the transaction API.**
 
 :::caution
-Authorization Any request made without the authorization key (secret key) will fail with a 401 (Unauthorized) response code.
+**Authorization** Any request made without the authorization key (secret key) will fail with a **401** (Unauthorized) response code.
 :::
 
 :::info
-The authorization key is sent via the request header as Bearer Token Authorization
+**The authorization key is sent via the request header as Bearer Token Authorization**
 :::
 
 **Example:**
@@ -532,8 +507,9 @@ This is an endpoint to query the transactions a customer has made. This is done 
     "Note: The customer identifier is to be passed via the endpoint being queried. That is: replace {{customer_identifier}} on the end point with the customer identifier of the customer whose transactions you want to query."
   }
 />
+<br />
 
-Response expected from the API to show queried Virtual Accounts.
+**Response expected from the API to show queried Virtual Accounts.**
 
 <Tabs>
 <TabItem value="Successful" label="200: Successful">
@@ -779,6 +755,8 @@ This is an endpoint to retrieve the details of a customer'svirtual account using
   }
 />
 
+<br />
+
 <Tabs>
 <TabItem value="Successful" label="200: Successful">
 
@@ -866,7 +844,7 @@ This is an endpoint to retrieve the details of a customer'svirtual account using
 ```
 
 </TabItem>
-<TabItem value="not-updated" label="424: Not Updated">
+<TabItem value="not-updated" label="424: Updated Error">
 
 ```js
 {
