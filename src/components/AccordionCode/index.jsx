@@ -52,13 +52,16 @@ export const Toggle = ({ data }) => {
 
 export default function AccordionCode({ items }) {
   return (
-    <Container className=" dark:border-[#303337]">
-      <div className="">
-        {items?.map((item) => {
-          return <Toggle key={item.key} data={item} />;
-        })}
-      </div>
-    </Container>
+    <>
+      <h4>Responses</h4>
+      <Container className=" dark:border-[#303337]">
+        <div className="">
+          {items?.map((item) => {
+            return <Toggle key={item.key} data={item} />;
+          })}
+        </div>
+      </Container>
+    </>
   );
 }
 const Container = styled.div`
