@@ -15,13 +15,20 @@ import {
   editAmountOrDurationResponse,
   simulatePaymentEndpointApi,
   simulatePaymentEndpointResponse,
-} from "@site/src/data/VirtualAccountsDocs/data";
+} from "@site/src/data/VirtualAccountsDocs/dva-data";
 import PaymentImg from "/static/img/squad-fav.svg";
 
 # Dynamic Virtual Account
 
-This module contains APIs that allow you generate Virtual Accounts that can be used on a transaction basis. This means that you can set a timer for expiry, a transaction ref, determine the amount to be collected.
+This module contains APIs that allow you generate a pool of Virtual Accounts that can be assigned on a transaction basis. This means that you can set a timer for expiry, a transaction ref, determine the amount to be collected.
+
+Please note that all accounts created will now bear the merchant's business name and no longer SQUAD CHECKOUT as it used to be. The format will now be SQUAD_MERCHANT BUSINESS NAME. (Also note that this doesn't affect already created accounts in the pool).
+
+After creating the pool of accounts, the system automatically assigns accounts from your pool on a transaction basis.
+
 It has various webhook notifications for mismatch, expired and successful transaction as we as a re-query endpoint to see all transactions that have been queued for refunds, and those that have been refunded.
+
+**Please note that to create dynamic virtual accounts for your pools, your KYC account needs to be a GTB account number and is mapped to the BVN provided.**
 
 ### Process Flow
 
@@ -187,7 +194,7 @@ Webhook Notification is sent for 3 different events/ status
 2. Mismatch: A transfer that happens within the specified duration but expected amount is not equal to the transfered amount.
 3. Expired: Transaction that happens after the set duration or after a successful transaction has been recorded, it doesn't matter if the transferred amount is equivalent to the expected amount.
 
-**To set your webhook, kindly visit your squad dashboard and go to the merchant setting page you will see a field labelled webhook URL. Only accounts with a valid webhook URL will receive notification. **
+**To set your webhook, kindly visit your squad dashboard and go to the merchant setting page you will see a field labelled webhook URL. Only accounts with a valid webhook URL will receive notification.**
 
 #### Sample Webhook Notification (Success)
 
@@ -258,25 +265,7 @@ The parameters to be hashed are seen below:
 #### Webhook Error Log
 
 This contains all missed webhook notifications that we didn't get a 200 response for. The aim of this is to mitigate against missed webhooks.
-
-<button
-  href="#"
-  className="group w-full bg-transparent border border-solid border-gray-200 flex p-5 rounded hover:shadow-sm hover:cursor-pointer"
->
-  <a className="flex">
-    <div>
-      <img src={PaymentImg} alt="Squad logo" />
-    </div>
-    <div className="pl-4 text-gray-950 dark:text-white">
-      <p className="p-0 m-0 hover:text-sm group-hover:text-blue-600">
-        API Specifications
-      </p>
-      <p className="pt-1 m-0">Virtual Accounts</p>
-    </div>
-  </a>
-</button>
-
-<p className="text-center text-gray-400 pt-1 text-sm">Click to Open Link</p>
+[Click to open API specifications](https://squadinc.gitbook.io/virtual-accounts/reference/api-specifications#delete-webhook-error-log)
 
 #### Sample Error Log Response for DVA
 

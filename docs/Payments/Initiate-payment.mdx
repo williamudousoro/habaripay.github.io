@@ -9,6 +9,8 @@ import {
   initiatePaymentResponse,
   chargeCardApi,
   chargeCardResponse,
+  queryAllTransactionsApi,
+  queryAllTransactionsResponse,
 } from "@site/src/data/PaymentDocs/data.js";
 import ApiTest from "@site/src/components/ApiTest";
 
@@ -16,10 +18,14 @@ import ApiTest from "@site/src/components/ApiTest";
 
 ##### This API allows you to initiate transaction by making calls from your server which returns a URL that when visited will call up our payment modal.
 
-:::caution
+:::note
 
 **Authorization** Any request made without the authorization key (secret key) will fail with a ** 401 ** (Unauthorized) response code.
 
+:::
+
+:::caution
+If using other services such as dynamic virtual accounts, do not use the same transaction reference
 :::
 
 :::info
@@ -71,6 +77,10 @@ Authorization Any request made without the authorization key (secret key) will f
 The authorization key is sent via the request header as Bearer Token Authorization
 :::
 
+:::tip
+For recurring Payments test on Sandbox, ensure to use the test card: 5200000000000007
+:::
+
 **Example:**
 Authorization: Bearer sandbox_sk_94f2b798466408ef4d19e848ee1a4d1a3e93f104046f
 
@@ -120,6 +130,22 @@ This allows you charge a card using the token generated during the initial trans
     "token_id":"tJlYMKcwPd",
 }
 ```
+
+### Query All Transactions
+
+This endpoint allows you to query all transactions and filter using multiple parameters like transaction ref, start and end dates, amount, etc
+
+N.B: The date parameters are compulsory and should be a maximum of one month gap
+
+<Accordion
+  items={queryAllTransactionsApi}
+  parameters={true}
+  endpoint={"https://sandbox-api-d.squadco.com/transaction"}
+  method={"GET"}
+  summary={""}
+/>
+
+<AccordionCode items={queryAllTransactionsResponse} />
 
 ### Go Live
 
