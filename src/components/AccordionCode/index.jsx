@@ -9,8 +9,6 @@ export const Toggle = ({ data }) => {
   const classState = open ? "open" : "";
   const rotate = open ? "rotate-90" : "";
 
-  console.log(data, "data");
-
   const onClick = () => {
     setOpen((state) => !state);
   };
@@ -56,8 +54,8 @@ export default function AccordionCode({ items }) {
       <h4>Responses</h4>
       <Container className=" dark:border-[#303337]">
         <div className="">
-          {items?.map((item) => {
-            return <Toggle key={item.key} data={item} />;
+          {items?.map((item, id) => {
+            return <Toggle key={id} data={item} />;
           })}
         </div>
       </Container>

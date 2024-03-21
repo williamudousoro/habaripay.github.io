@@ -57,7 +57,7 @@ const Accordion = (props) => {
                 <div>
                   {props?.items?.map((item, id) => {
                     return (
-                      <div>
+                      <div key={id}>
                         <h5 className="text-xs md:text-sm">{item.title}</h5>
                         <div className="items-wrap overflow-scroll">
                           {item?.children?.map((param) => {
