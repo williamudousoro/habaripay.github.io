@@ -11,6 +11,7 @@ const ApiTest = () => {
   const [amount, setAmount] = useState("");
   const [email, setEmail] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("cURL");
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   let nodeCode = `
   const axios = require('axios');
@@ -20,13 +21,12 @@ const ApiTest = () => {
     "currency": "NGN",
     "initiate_type": "inline",
     "CallBack_URL": "https://www.linkedin.com/",
-    "is_recurring": true
   });
   
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: 'https://qa-api.squadinc.co/payment/Initiate',
+    url: 'https://sandbox-api.squadco.com/payment/Initiate',
     headers: { 
       'Authorization': '47M3DMZD', 
       'Content-Type': 'application/json'
@@ -49,14 +49,13 @@ const ApiTest = () => {
     'Authorization': '47M3DMZD',
     'Content-Type': 'application/json'
   };
-  var request = http.Request('POST', Uri.parse('https://qa-api.squadinc.co/payment/Initiate'));
+  var request = http.Request('POST', Uri.parse('https://sandbox-api.squadco.com/payment/Initiate'));
   request.body = json.encode({
     "amount":${amount ? amount + "," : "_ ,"}
     "email":${email ? email + " " : "_ "},
     "currency": "NGN",
     "initiate_type": "inline",
     "CallBack_URL": "https://www.linkedin.com/",
-    "is_recurring": true
   });
   request.headers.addAll(headers);
   
@@ -72,7 +71,7 @@ const ApiTest = () => {
 `;
 
   let curlCode = `
-  curl --location 'https://qa-api.squadinc.co/payment/Initiate' 
+  curl --location 'https://sandbox-api.squadco.com/payment/Initiate' 
   --header 'Authorization: 47M3DMZD'
   --header 'Content-Type: application/json'
   --data-raw '{
@@ -81,7 +80,6 @@ const ApiTest = () => {
       "currency":"NGN",
       "initiate_type": "inline",
       "CallBack_URL" : "https://www.linkedin.com/",
-      "is_recurring": true
   }
   '
 `;
@@ -93,8 +91,8 @@ const ApiTest = () => {
       amount: Number(amount) * 100,
       email: email,
       currency_code: "NGN",
-      key: "qa_pk_sample-public-key-1",
-      is_recurring: true,
+      key: "sandbox_sk_ec8d24ec251825c68b0f7a97509c466550517b30a390",
+      // is_recurring: true,
       initiate_type: "inline",
     };
 
@@ -135,7 +133,7 @@ const ApiTest = () => {
             POST
           </p>
           <p className="text-[rgba(45,72,117,0.70)] dark:text-[#a8b7cc] pl-2 md:pl-4">
-            api.squad.co/payment/Initiate
+            sandbox-api.squadco.com/payment/Initiate
           </p>
         </div>
         <Dropdown
